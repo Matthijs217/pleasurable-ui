@@ -1,0 +1,158 @@
+<div class="event-main-container">
+
+      {% for headerEvent in headerEvents %}
+        <section class="card-child-container">
+          <figure class="card-image-container">
+            {% if headerEvent.photo and headerEvent.photo.id %}
+              <picture>
+                <source media="(max-width: 360px)" type="image/avif" srcset="https://fdnd-agency.directus.app/assets/{{ headerEvent.photo.id }}?format=avif&width=360">
+    
+                <source media="(max-width: 720px)" type="image/webp" srcset="https://fdnd-agency.directus.app/assets/{{ headerEvent.photo.id }}?format=webp&width=720">
+                
+                <source media="(max-width: 900px)" type="image/avif" srcset="https://fdnd-agency.directus.app/assets/{{ headerEvent.photo.id }}?format=avif&width=700">
+                
+                <source media="(min-width: 1100px)" type="image/webp" srcset="https://fdnd-agency.directus.app/assets/{{ headerEvent.photo.id }}?format=webp&width=900">
+                
+                <source media="(min-width: 1600px)" type="image/avif" srcset="https://fdnd-agency.directus.app/assets/{{ headerEvent.photo.id }}?format=avif&width=1400">
+
+                <img class="card-image" style="view-transition-name: event-image-{{ headerEvent.id }}" src="https://fdnd-agency.directus.app/assets/{{ headerEvent.photo.id }}"
+                    alt="{{ headerEvent.title }}" width="{{ headerEvent.photo.width }}" height="{{ headerEvent.photo.height }}">
+              </picture>
+            {% else %}
+              <img class="card-image" style="view-transition-name: event-image-{{ headerEvent.id }}" src="/assets/Image.png" alt="Afbeelding niet beschikbaar">
+            {% endif %}
+            <figcaption class="image-caption label">
+              {% if headerEvent.title %}
+              {{ headerEvent.title | split: " " | slice: 0, 2 | join: " " | upcase }}
+              {% else %}
+                NADER BEPAALD
+              {% endif %}
+            </figcaption>
+          </figure>
+
+        {% assign event_date = headerEvent.date | default: '2024-01-01' %}
+        <time class="event-time-stamp event-date" datetime="{{ event_date | date: '%Y-%m-%d' }}">
+          <span>
+            {% if headerEvent.date %}
+              {{ headerEvent.date | upcase }}
+            {% else %}
+              NADER BEPAALD
+            {% endif %}
+          </span>
+
+          <span>
+            {% if headerEvent.location %}
+              / {{ headerEvent.location | upcase }}
+            {% else %}
+              / NADER BEPAALD
+            {% endif %}
+          </span>
+        </time>
+
+        <h3 class="event-card-title">
+          {% if headerEvent.title %}
+            {{ headerEvent.title | upcase }}
+          {% else %}
+            NADER BEPAALD
+          {% endif %}
+        </h3>
+
+        <a class="card-button btn-link" href="/events/detail-event/{{ headerEvent.id }}">
+          DETAILS
+          <img src="/img/arrow.svg">
+        </a>
+      </section>
+    {% endfor %}
+
+   
+<section class="events-container">
+        <h4 hidden>Events overzicht</h4>
+
+        <article class="event-item">
+            <p class="label">dda</p>
+            <h4 class="event-title">Ledenbijeenkomst</h4>
+
+            <div class="event-data-content">
+                <div class="event-date-location-data-container">
+                    <time class="event-date" datetime="2025-11-09">01 jan 2024</time>
+                    <span class="location">/ AMSTERDAM</span>
+                </div>
+
+                <a class="btn-link event-details-button" href="">
+                    DETAILS
+                    <img src="/img/arrow.svg">
+                </a>
+            </div>
+        </article>
+
+       <article class="event-item">
+            <p class="label">dda</p>
+            <h4 class="event-title">Ledenbijeenkomst</h4>
+
+            <div class="event-data-content">
+                <div class="event-date-location-data-container">
+                    <time class="event-date" datetime="2025-11-09">01 jan 2024</time>
+                    <span class="location">/ Amsterdam</span>
+                </div>
+
+                <a class="btn-link event-details-button" href="">
+                    DETAILS
+                    <img src="/img/arrow.svg">
+                </a>
+            </div>
+        </article>
+
+        <article class="event-item">
+            <p class="label">dda</p>
+            <h4 class="event-title">Ledenbijeenkomst</h4>
+
+            <div class="event-data-content">
+                <div class="event-date-location-data-container">
+                    <time class="event-date" datetime="2025-11-09">01 jan 2024</time>
+                    <span class="location">/ Amsterdam</span>
+                </div>
+
+                <a class="btn-link event-details-button" href="">
+                    DETAILS
+                    <img src="/img/arrow.svg">
+                </a>
+            </div>
+        </article>
+
+        <article class="event-item">
+            <p class="label">dda</p>
+            <h4 class="event-title">Ledenbijeenkomst</h4>
+
+            <div class="event-data-content">
+                <div class="event-date-location-data-container">
+                    <time class="event-date" datetime="2025-11-09">01 jan 2024</time>
+                    <span class="location">/ Amsterdam</span>
+                </div>
+
+                <a class="btn-link event-details-button" href="">
+                    DETAILS
+                    <img src="/img/arrow.svg">
+                </a>
+            </div>
+        </article>
+
+        <article class="event-item">
+            <p class="label">dda</p>
+            <h4 class="event-title">Ledenbijeenkomst</h4>
+
+            <div class="event-data-content">
+                <div class="event-date-location-data-container">
+                    <time class="event-date" datetime="2025-11-09">01 jan 2024</time>
+                    <span class="location">/ Amsterdam</span>
+                </div>
+
+                <a class="btn-link event-details-button" href="">
+                    DETAILS
+                    <img src="/img/arrow.svg">
+                </a>
+            </div>
+        </article>
+    </section>
+</div>
+
+    
