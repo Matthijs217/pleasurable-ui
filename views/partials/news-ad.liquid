@@ -2,11 +2,8 @@
     <h4>{{ message }}</h2>
     <form action="/">
 
-    <div class="input-container">
-        <input placeholder="" id="email" type="text">
-       <label for="email">Emailadres</label> 
-    </div>
-
+    {% render 'partials/input-type.liquid', message: "Emailadres" %}
     {% render 'partials/button.liquid', submit: "AANMELDEN" %}
+
     </form>
 </section>
