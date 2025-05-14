@@ -26,10 +26,13 @@ app.set('views', './views')
 app.get('/', async function (request, response) {
   let vacaturesResponseJSON
 
-    const vacaturesResponse = await fetch(`https://fdnd-agency.directus.app/items/dda_agencies?limit=1&fields=id,title,vacancies.*`)
-    vacaturesResponseJSON = await vacaturesResponse.json()
+  const vacaturesResponse = await fetch(`https://fdnd-agency.directus.app/items/dda_agencies?limit=1&fields=id,title,vacancies.*`)
+  vacaturesResponseJSON = await vacaturesResponse.json()
 
-  response.render('home.liquid', {vacatures: vacaturesResponseJSON.data});
+  const apiResponseHeaderEvents = await fetch('https://fdnd-agency.directus.app/items/dda_events?filter[id][_in]=5&fields=*,photo.id,photo.width,photo.height');
+  const apiResponseHeaderEventsJSON = await apiResponseHeaderEvents.json()
+
+  response.render('home.liquid', {vacatures: vacaturesResponseJSON.data, headerEvents: apiResponseHeaderEventsJSON.data});
 })
 
 app.get('/events', async function (request, response) {
