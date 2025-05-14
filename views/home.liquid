@@ -2,6 +2,7 @@
 {% render 'partials/header.liquid' %}
 <script src="scripts/script.js"></script>
 
+{% render 'partials/events.liquid', headerEvents: headerEvents %}
 
 {% render 'partials/list-table.liquid', vacatures: vacatures %}
 {% render 'partials/news-ad.liquid', message: "Meld je aan voor onze nieuwsbrief", submit: "aanmelden" %}
