@@ -1,0 +1,10 @@
+.category-label {
+    border: var(--border);
+    text-transform: uppercase;
+    font-family: var(--secondary-font);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    padding: 0 5px 0 5px;
+}
