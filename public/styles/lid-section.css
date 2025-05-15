@@ -1,0 +1,156 @@
+.leden-section-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+
+    @media (min-width: 900px) {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr;
+    }
+}
+
+.image-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+}
+
+.lid-logo-1 { 
+    grid-column: 1; 
+    grid-row: 1; 
+}
+.lid-logo-2 { 
+    grid-column: 2; 
+    grid-row: 1; 
+}
+.lid-logo-3 { 
+    grid-column: 3; 
+    grid-row: 1; 
+}
+
+.lid-title {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    text-align: center;
+    align-self: center;
+    justify-self: center;
+    max-width: 17ch;
+}
+
+.lid-logo-8 { 
+    grid-column: 1; 
+    grid-row: 3; 
+}
+.lid-logo-9 { 
+    grid-column: 2; 
+    grid-row: 3; 
+}
+.lid-logo-10 { 
+    grid-column: 3; 
+    grid-row: 3; 
+}
+
+/* display none voor kleinere schermen */
+.lid-logo-4, 
+.lid-logo-5,
+.lid-logo-6, 
+.lid-logo-7 {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .image-container {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+
+    .lid-logo-4 {
+        display: block;
+        grid-column: 4; 
+        grid-row: 1;
+    }
+
+    .lid-logo-5 {
+        display: block;
+        grid-column: 1; 
+        grid-row: 2;
+    }
+
+    .lid-title {
+        grid-column: 2 / 4;
+        grid-row: 2;
+    }
+
+    .lid-logo-6 {
+        display: block;
+        grid-column: 4; 
+        grid-row: 2;
+    }
+    
+    .lid-logo-7 {
+        display: block;
+        grid-column: 4; 
+        grid-row: 3;
+    }
+}
+
+.image-container picture {
+    width: 100%;
+    height: 100%;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* conainer 2 publicatie tekst */
+.publication-container {
+    grid-column: 1;
+    grid-row: 2;
+
+    padding-top: 3em;
+    display: flex;
+    flex-direction: column;
+    gap: 3em;
+    justify-content: center;
+    align-items: center; 
+
+     @media (min-width: 900px) {
+        grid-column: 2;
+        grid-row: 1;
+        padding-top: 0;
+    }
+}
+
+.label {
+    grid-column: 1;
+    grid-row: 1;
+    align-self: center;
+    justify-self: center;
+
+    @media (min-width: 900px) {
+    display: none ;    
+} 
+}
+
+.publication-title {
+    grid-column: 1;
+    grid-row: 2;
+    align-self: center;
+    justify-self: center;
+    text-align: center;
+    line-height: 1em;
+}
+
+.publication-btn {
+    grid-column: 1;
+    grid-row: 3;
+    align-self: center;
+    justify-self: center;
+}
+
+.button {
+    margin-left: 2em;
+}
