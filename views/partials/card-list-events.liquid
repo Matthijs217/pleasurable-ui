@@ -11,11 +11,11 @@
                 <source media="(min-width: 1100px)" type="image/webp" srcset="https://fdnd-agency.directus.app/assets/{{ headerEvent.photo.id }}?format=webp&width=900">              
                 <source media="(min-width: 1600px)" type="image/avif" srcset="https://fdnd-agency.directus.app/assets/{{ headerEvent.photo.id }}?format=avif&width=1400">
 
-                <img class="card-image" style="view-transition-name: event-image-{{ headerEvent.id }}" src="https://fdnd-agency.directus.app/assets/{{ headerEvent.photo.id }}"
+                <img class="card-image" loading="lazy" style="view-transition-name: event-image-{{ headerEvent.id }}" src="https://fdnd-agency.directus.app/assets/{{ headerEvent.photo.id }}"
                     alt="{{ headerEvent.title }}" width="{{ headerEvent.photo.width }}" height="{{ headerEvent.photo.height }}">
               </picture>
             {% else %}
-              <img class="card-image" style="view-transition-name: event-image-{{ headerEvent.id }}" src="/assets/Image.png" alt="Afbeelding niet beschikbaar">
+              <img class="card-image" loading="lazy" style="view-transition-name: event-image-{{ headerEvent.id }}" src="/assets/Image.png" alt="Afbeelding niet beschikbaar">
             {% endif %}
             <figcaption class="image-caption label">
               {% if headerEvent.title %}
