@@ -1,0 +1,15 @@
+.back-to-home-redirect{
+    color: var(--black);
+    display: flex;
+    justify-content: center;
+    font-family: var(--secondary-font);
+    text-transform: uppercase;
+    gap: 0.5em;
+
+    img{
+        width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+    }
+}
