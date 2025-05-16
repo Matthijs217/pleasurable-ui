@@ -1,7 +1,7 @@
 .leden-section-container {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 1fr 0.5fr;
 
     @media (min-width: 900px) {
         grid-template-columns: 1fr 1fr;
@@ -150,5 +150,6 @@
     grid-row: 3;
     align-self: center;
     justify-self: center;
+    padding-bottom: var(--spacing-24);
 }
 
