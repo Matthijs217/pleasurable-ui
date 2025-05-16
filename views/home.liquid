@@ -25,10 +25,11 @@
 
 
   {% render 'partials/card-list-events.liquid', headerEvents: headerEvents %}
-  {% render 'partials/section-title.liquid', category:"VACATURES", message:"DE BESTE BUREAUS ZOEKEN DE BESTE MENSEN" %}
+  {% render 'partials/section-title.liquid', category:"VACATURES", message:"DE BESTE BUREAUS ZOEKEN DE BESTE MENSEN", link_text:"ALLE VACATURES" %}
   {% render 'partials/list-table.liquid', vacatures: vacatures %}
+  {% render 'partials/section-title.liquid', category:"PUBLICATIES", message:"HET LAATSTE NIEUWS", link_text:"ALLE PUBLICATIES" %}
   {% render 'partials/foto-card.liquid' %}
-{% render 'partials/news-ad.liquid', message: "Meld je aan voor onze nieuwsbrief", submit: "aanmelden" %}
+  {% render 'partials/news-ad.liquid', message: "Meld je aan voor onze nieuwsbrief", submit: "aanmelden" %}
   {% render 'partials/lid-section.liquid' %}
   {% render 'partials/partner-ad.liquid', submit: "WORD PARTNER" %}
   {% render 'partials/footer.liquid' %}
