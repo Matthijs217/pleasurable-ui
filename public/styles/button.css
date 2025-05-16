@@ -12,6 +12,11 @@
     appearance: none;
     font-family: "MartianMono", monospace;
 
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
     &:hover {
         color: var(--blue);
     }
