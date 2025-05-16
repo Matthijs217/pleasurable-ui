@@ -20,14 +20,14 @@
    
     </section>
 {% render 'partials/partner-carousel.liquid' %}
-{% render 'partials/section-title.liquid', category: "EVENTS", message: "HIER KAN JE ONS DE KOMENDE TIJD VINDEN" %}
+{% render 'partials/section-title.liquid', category: "EVENTS", message: "HIER KAN JE ONS DE KOMENDE TIJD VINDEN", link_text:"ALLE EVENTS", href:"/events" %}
 
 
 
   {% render 'partials/card-list-events.liquid', headerEvents: headerEvents %}
-  {% render 'partials/section-title.liquid', category:"VACATURES", message:"DE BESTE BUREAUS ZOEKEN DE BESTE MENSEN", link_text:"ALLE VACATURES" %}
+  {% render 'partials/section-title.liquid', category:"VACATURES", message:"DE BESTE BUREAUS ZOEKEN DE BESTE MENSEN", link_text:"ALLE VACATURES", href:"/vacatures" %}
   {% render 'partials/list-table.liquid', vacatures: vacatures %}
-  {% render 'partials/section-title.liquid', category:"PUBLICATIES", message:"HET LAATSTE NIEUWS", link_text:"ALLE PUBLICATIES" %}
+  {% render 'partials/section-title.liquid', category:"PUBLICATIES", message:"HET LAATSTE NIEUWS", link_text:"ALLE PUBLICATIES", href:"publicaties" %}
   {% render 'partials/foto-card.liquid' %}
   {% render 'partials/news-ad.liquid', message: "Meld je aan voor onze nieuwsbrief", submit: "aanmelden" %}
   {% render 'partials/lid-section.liquid' %}
