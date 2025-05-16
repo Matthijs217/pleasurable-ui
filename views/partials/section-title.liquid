@@ -3,11 +3,6 @@
 
     <h2 class="section-title">{{ message }}</h2>
 
-    <a class="btn-link" href="">
-      ALLE VACATURES
-      <svg class="btn-arrow" width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M8.5 13L3.4999 7.9999L8.5 2.99979" stroke="#364bf7" stroke-width="1.5" stroke-miterlimit="4.62023"/>
-        <path d="M13.5 8L3.5 8" stroke="#222226" stroke-width="1.5" stroke-miterlimit="4.62023" stroke-linejoin="round"/>
-      </svg>
-    </a>
+    {% render 'partials/link-href.liquid', link:"/vacatures", linktext:"ALLE VACATURES"%}
+
  </section>
