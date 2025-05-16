@@ -1,7 +1,7 @@
 <section class="thank-partner-container">
   <h4 class="thank-partner-title">Wij bedanken onze trouwe partners</h4>
 
-  <div class="btn-container">
+  <div class="btn-wrapper">
     {% render 'partials/button.liquid', submit: "WORD PARTNER" %}
   </div>
 </section>
@@ -26,5 +26,18 @@
   grid-column: 1;
   grid-row: 1;
 }
+
+ @media (min-width: 800px) {
+.btn-wrapper {
+  grid-column: 2;
+  grid-row: 1; 
+  justify-self: end;
+  }
+}
+
+
+
+
+
 
 </style>
