@@ -18,9 +18,10 @@
         </div>
    
     </section>
+{% render 'partials/partner-carousel.liquid' %}
+
 
   {% render 'partials/card-list-events.liquid', headerEvents: headerEvents %}
-  {% render 'partials/partner-carousel.liquid' %}
   {% render 'partials/list-table.liquid', vacatures: vacatures %}
   {% render 'partials/news-ad.liquid', message: "Meld je aan voor onze nieuwsbrief", submit: "aanmelden" %}
   {% render 'partials/foto-card.liquid' %}

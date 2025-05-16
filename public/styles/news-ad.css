@@ -6,7 +6,7 @@
     gap: var(--spacing-32);
     padding: var(--spacing-48);
     border: var(--border);
-    @media (min-width: 500px) { 
+    @media (min-width: 800px) { 
         flex-direction: row;     
     }
     & h4 {
@@ -14,12 +14,15 @@
     }
     & form {
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         gap: 3em;
-        @media (min-width: 500px) { 
+        @media (min-width: 430px) { 
+            flex-direction: row;
+        }
+        @media (min-width: 800px) { 
             margin-left: auto;
-            margin-right: 2em;
         }
         & .input-container {
             position: relative;
