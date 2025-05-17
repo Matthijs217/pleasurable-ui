@@ -1,94 +1,36 @@
-<div class="event-cards-parent-container">
-  <article class="card-child-container">
-    <figure class="card-image-container">
+
+<article class="card-container-child">
+    <figure class="card-container-image">
         <picture>
-            <source media="(max-width: 360px)" type="image/avif" srcset="{{ img-src }}">
-            <source media="(max-width: 360px)" type="image/webp" srcset="{{ img-src }}">
+            <source media="(max-width: 360px)" type="image/avif" srcset="https://fdnd-agency.directus.app/assets/{{ img-src }}?format=avif&width=360">
+            <source media="(max-width: 360px)" type="image/webp" srcset="https://fdnd-agency.directus.app/assets/{{ img-src }}?format=webp&width=360">
 
-            <source media="(max-width: 720px)" type="image/avif" srcset="{{ img-src }}">
-            <source media="(max-width: 720px)" type="image/webp" srcset="{{ img-src }}">
+            <source media="(max-width: 720px)" type="image/avif" srcset="https://fdnd-agency.directus.app/assets/{{ img-src }}?format=avif&width=720">
+            <source media="(max-width: 720px)" type="image/webp" srcset="https://fdnd-agency.directus.app/assets/{{ img-src }}?format=webp&width=720">
 
-            <source media="(min-width: 900px)" type="image/avif" srcset="{{ img-src }}">
-            <source media="(min-width: 900px)" type="image/webp" srcset="{{ img-src }}">
+            <source media="(min-width: 900px)" type="image/avif" srcset="https://fdnd-agency.directus.app/assets/{{ img-src }}?format=avif&width=900">
+            <source media="(min-width: 900px)" type="image/webp" srcset="https://fdnd-agency.directus.app/assets/{{ img-src }}?format=webp&width=900">
 
-            <source media="(min-width: 1100px)" type="image/webp" srcset="{{ img-src }}">
-            <source media="(min-width: 1600px)" type="image/avif" srcset="{{ img-src }}">
+            <source media="(min-width: 1100px)" type="image/webp" srcset="https://fdnd-agency.directus.app/assets/{{ img-src }}?format=webp&width=1100">
+            <source media="(min-width: 1600px)" type="image/avif" srcset="https://fdnd-agency.directus.app/assets/{{ img-src }}?format=avif&width=1600">
 
-            <img class="card-image" src="/img/Image.png" alt="Voorbeeldafbeelding" width="312" height="312">
+            <img class="card-image" src="https://fdnd-agency.directus.app/assets/{{ img-src }}" alt="{{ card-title }}" width="{{ img-width }}" height="{{ img-height }}">
         </picture>
-
-        <figcaption class="image-caption label">DDA</figcaption>
     </figure>
 
-    <time class="event-time-stamp event-date" datetime="2024-01-01">
-      <span>01 JAN 2024</span>
-      <span>/ AMSTERDAM</span>
+    {% render 'partials/category-label.liquid', text: card-label %} 
+
+    <time class="card-date-location event-date" datetime="01-01-2024">
+      <span>{{ card-date }}</span>
+      <span>/ {{ card-location }}</span>
     </time>
 
-    <h3 class="event-card-title">DUTCH DIGITAL DAY: THE 10TH EDITION</h3>
+    <h3 class="card-title">{{ card-title }}</h3>
 
-    {% render 'partials/link-href.liquid', link: '/events/detail-event/1', linktext: 'DETAILS', class: "card-button"  %}
-  </article>
+    <div class="card-container-button">
+      {% render 'partials/link-href.liquid', link: card-href-link, linktext: 'DETAILS' %} 
+    </div>
+</article>
 
-<article class="card-child-container">
-    <figure class="card-image-container">
-        <picture>
-            <source media="(max-width: 360px)" type="image/avif" srcset="{{ img-src }}">
-            <source media="(max-width: 360px)" type="image/webp" srcset="{{ img-src }}">
 
-            <source media="(max-width: 720px)" type="image/avif" srcset="{{ img-src }}">
-            <source media="(max-width: 720px)" type="image/webp" srcset="{{ img-src }}">
-
-            <source media="(min-width: 900px)" type="image/avif" srcset="{{ img-src }}">
-            <source media="(min-width: 900px)" type="image/webp" srcset="{{ img-src }}">
-
-            <source media="(min-width: 1100px)" type="image/webp" srcset="{{ img-src }}">
-            <source media="(min-width: 1600px)" type="image/avif" srcset="{{ img-src }}">
-
-            <img class="card-image" src="/img/Image.png" alt="Voorbeeldafbeelding" width="312" height="312">
-        </picture>
-
-        <figcaption class="image-caption label">DDA</figcaption>
-    </figure>
-
-    <time class="event-time-stamp event-date" datetime="2024-01-01">
-      <span>01 JAN 2024</span>
-      <span>/ AMSTERDAM</span>
-    </time>
-
-    <h3 class="event-card-title">DUTCH DIGITAL DAY: THE 10TH EDITION</h3>
-
-    {% render 'partials/link-href.liquid', link: '/events/detail-event/1', linktext: 'DETAILS', class: "card-button"  %}
-  </article>
-
- <article class="card-child-container">
-    <figure class="card-image-container">
-        <picture>
-            <source media="(max-width: 360px)" type="image/avif" srcset="{{ img-src }}">
-            <source media="(max-width: 360px)" type="image/webp" srcset="{{ img-src }}">
-
-            <source media="(max-width: 720px)" type="image/avif" srcset="{{ img-src }}">
-            <source media="(max-width: 720px)" type="image/webp" srcset="{{ img-src }}">
-
-            <source media="(min-width: 900px)" type="image/avif" srcset="{{ img-src }}">
-            <source media="(min-width: 900px)" type="image/webp" srcset="{{ img-src }}">
-
-            <source media="(min-width: 1100px)" type="image/webp" srcset="{{ img-src }}">
-            <source media="(min-width: 1600px)" type="image/avif" srcset="{{ img-src }}">
-
-            <img class="card-image" src="/img/Image.png" alt="Voorbeeldafbeelding" width="312" height="312">
-        </picture>
-
-        <figcaption class="image-caption label">DDA</figcaption>
-    </figure>
-
-    <time class="event-time-stamp event-date" datetime="2024-01-01">
-      <span>01 JAN 2024</span>
-      <span>/ AMSTERDAM</span>
-    </time>
-
-    <h3 class="event-card-title">DUTCH DIGITAL DAY: THE 10TH EDITION</h3>
-
-    {% render 'partials/link-href.liquid', link: '/events/detail-event/1', linktext: 'DETAILS', class: "card-button"  %}
-  </article>
-</div>
+    
