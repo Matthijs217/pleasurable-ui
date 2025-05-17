@@ -2,7 +2,6 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: left;
-    border-top: 2px solid var(--black);
     & .ftr-container {
         display: flex;
         flex-direction: column;
