@@ -1,13 +1,16 @@
-.event-cards-parent-container {
-    padding: var(--spacing-40) var(--spacing-16);
+.container {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     grid-template-rows: auto;
-    gap: var(--spacing-24);
+    gap: var(--spacing-12);
+
+    @media (min-width: 510px) {
+        gap: 0;
+    }
 
     @media (min-width: 800px) {
         grid-template-columns: 1fr 1fr;
-        gap: 0em;
+        gap: 0;
     }
 
     @media (min-width: 1200px) {
@@ -15,79 +18,48 @@
     }
 }
 
-.card-child-container {
-    display: flex;
-    flex-direction: column;
+.card-container-child {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
     gap: var(--spacing-16);
-    padding: var(--spacing-32);
-    border-bottom: var(--border);
-}
-
-.card-child-container:last-child {
-    border-bottom: none;
-    border-left: none;
-}
-
-.card-child-container:first-child {
-    border-right: none;
+    padding: var(--spacing-16);
+    border-bottom: 1px solid black;
 }
 
 @media (min-width: 800px) {
-    .card-child-container {
-        border: var(--border);
+    .card-container-child {
+        border-bottom: none;
+        padding: var(--spacing-48);
     }
 
-    .card-child-container:last-child {
-        border-bottom: var(--border);
+    .card-container-child:nth-child(1) {
+        border-right: 1px solid black;
     }
-}
 
-.event-date,
-.location {
-    font-family: var(--secondary-font);
-}
-
-@supports (display: flex) {
-    .card-image-container {
-        display: flex;
-        flex-direction: column;
-        gap: 1.5em;
+    .card-container-child:nth-child(3) {
+        border-left: 1px solid black;
     }
 }
 
-.card-image {
-    border: var(--border);
-    height: 25em;
-    width: 100%;
-    object-fit: cover;
+.card-container-image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
 }
 
-.image-caption {
-    border: var(--border);
-    width: fit-content;
+.card-container-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border: var(--border)
 }
 
-@supports (display: flex) {
-    .event-time-stamp {
-        display: flex;
-        flex-direction: row;
-        gap: var(--spacing-8);
-    }
-}
-
-.event-time-stamp {
-    display: flex;
-    flex-direction: row;
-    gap: var(--spacing-8);
-}
-
-.event-card-title {
-    display: flex;
-    flex-direction: row;
-    gap: var(--spacing-8);
+.card-title {
     line-height: 1em;
 }
 
-.card-button {
-    padding-top: var(--spacing-40);
+.card-container-button {
+    padding-top: var(--spacing-24);
 }
