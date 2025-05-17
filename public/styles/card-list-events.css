@@ -1,7 +1,6 @@
 /* main container */
 .event-main-container {
-    padding: var(--spacing-40) var(--spacing-16);
-
+    /* padding: var(--spacing-40) var(--spacing-16); */
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: auto auto;

@@ -31,11 +31,17 @@ app.get('/', async function (request, response) {
 
   const apiResponseEvents = await fetch('https://fdnd-agency.directus.app/items/dda_events?filter[id][_in]?limit=6,3,5&fields=*,photo.id,photo.width,photo.height');
   const apiResponseEventsJSON = await apiResponseEvents.json()
+
+  const apiResponseEventsLists = await fetch('https://fdnd-agency.directus.app/items/dda_events?filter[id][_in]=6,3,5,1,7,4&limit=5&fields=id,title,location,date');
+  const apiResponseEventsListsJSON = await apiResponseEventsLists.json()
+
+  const apiResponseEventsListCards = await fetch('https://fdnd-agency.directus.app/items/dda_events?filter[id][_eq]=4&fields=*,photo.id,photo.width,photo.height');
+  const apiResponseEventsListCardsJSON = await apiResponseEventsListCards.json()
     
   const ledenResponse = await fetch ('https://fdnd-agency.directus.app/items/dda_agencies')
   const ledenResponseJSON = await ledenResponse.json()
 
-  response.render('home.liquid', {vacatures: vacaturesResponseJSON.data, events: apiResponseEventsJSON.data, leden: ledenResponseJSON.data });
+  response.render('home.liquid', {vacatures: vacaturesResponseJSON.data, events: apiResponseEventsJSON.data, eventsListCards: apiResponseEventsListCardsJSON.data, eventsLists: apiResponseEventsListsJSON.data, leden: ledenResponseJSON.data });
 })
 
 app.get('/events', async function (request, response) {

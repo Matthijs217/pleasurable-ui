@@ -19,14 +19,44 @@
         </div>
    
     </section>
-  {% render 'partials/partner-carousel.liquid' %}
-  {% render 'partials/section-title.liquid', category: "EVENTS", message: "HIER KAN JE ONS DE KOMENDE TIJD VINDEN", link_text:"ALLE EVENTS", href:"/events" %}
-  {% render 'partials/card-list-events.liquid', headerEvents: headerEvents %}
-  {% render 'partials/section-title.liquid', category:"VACATURES", message:"DE BESTE BUREAUS ZOEKEN DE BESTE MENSEN", link_text:"ALLE VACATURES", href:"/vacatures" %}
-  {% render 'partials/list-table.liquid', vacatures: vacatures %}
-  {% render 'partials/section-title.liquid', category:"PUBLICATIES", message:"HET LAATSTE NIEUWS", link_text:"ALLE PUBLICATIES", href:"publicaties" %}
 
-  <div class="container">
+{% render 'partials/partner-carousel.liquid' %}
+{% render 'partials/section-title.liquid', category: "EVENTS", message: "HIER KAN JE ONS DE KOMENDE TIJD VINDEN", link_text:"ALLE EVENTS", href:"/events" %}
+
+
+<div class="event-main-container">
+    {% for eventsListCard in eventsListCards %}
+    {% render 'partials/foto-card.liquid',
+        img-src: eventsListCard.photo.id,
+        img-width: eventsListCard.photo.width,
+        img-height: eventsListCard.photo.height,
+        card-label: eventsListCard.title,       
+        card-title: eventsListCard.title,
+        card-date: eventsListCard.date,
+        card-location: eventsListCard.location,
+        image-alt: eventsListCard.title
+        card-href-link: "event/detail-event/" | append: eventsListCard.id
+    %}
+    {% endfor %}
+
+    <div class="events-container">
+        {% for eventsList in eventsLists %}
+        {% render 'partials/event-list.liquid',
+            card-label: eventsList.title,       
+            card-title: eventsList.title,
+            card-date: eventsList.date,
+            card-location: eventsList.location,
+            card-href-link: "event/detail-event/" | append: eventsList.id
+        %}
+        {% endfor %}
+    </div>
+</div>
+
+{% render 'partials/section-title.liquid', category:"VACATURES", message:"DE BESTE BUREAUS ZOEKEN DE BESTE MENSEN", link_text:"ALLE VACATURES", href:"/vacatures" %}
+{% render 'partials/list-table.liquid', vacatures: vacatures %}
+{% render 'partials/section-title.liquid', category:"PUBLICATIES", message:"HET LAATSTE NIEUWS", link_text:"ALLE PUBLICATIES", href:"publicaties" %}
+
+<div class="container">
     {% for event in events %}
     {% render 'partials/foto-card.liquid',
         img-src: event.photo.id,
@@ -37,15 +67,15 @@
         card-date: event.date,
         card-location: event.location,
         image-alt: event.title
-        card-href-link: "event/detail-event/" | append: event.id,
+        card-href-link: "event/detail-event/" | append: event.id
     %}
     {% endfor %}
 </div>
 
-  {% render 'partials/news-ad.liquid', message: "Meld je aan voor onze nieuwsbrief", submit: "aanmelden" %}
-  {% render 'partials/lid-section.liquid' %}
-  {% render 'partials/partner-ad.liquid', submit: "WORD PARTNER" %}
-  {% render 'partials/footer.liquid' %}
+{% render 'partials/news-ad.liquid', message: "Meld je aan voor onze nieuwsbrief", submit: "aanmelden" %}
+{% render 'partials/lid-section.liquid' %}
+{% render 'partials/partner-ad.liquid', submit: "WORD PARTNER" %}
+{% render 'partials/footer.liquid' %}
   
 </main>
 

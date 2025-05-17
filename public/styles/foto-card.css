@@ -19,10 +19,13 @@
 }
 
 .card-container-child {
-    display: grid;
+    /* display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: auto;
-    gap: var(--spacing-16);
+    grid-template-rows: auto; */
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-24);
+    /* gap: var(--spacing-16); */
     padding: var(--spacing-16);
     border-bottom: 1px solid black;
 }
@@ -62,4 +65,9 @@
 
 .card-container-button {
     padding-top: var(--spacing-24);
+}
+
+.label-container {
+  padding: 0 5px;
+  display: inline-block;
 }

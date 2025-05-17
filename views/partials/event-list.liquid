@@ -1,73 +1,14 @@
-<section class="events-container">
-        <h4 hidden>Events overzicht</h4>
+<article class="event-item">
+    {% render 'partials/category-label.liquid', text: card-label %} 
+    <h4 class="event-title">{{ card-title }}</h4>
 
-        <article class="event-item">
-            <p class="label">dda</p>
-            <h4 class="event-title">Ledenbijeenkomst</h4>
+    <div class="event-data-content">
+        <div class="event-date-location-data-container">
+            <time class="event-date">{{ card-date }}</time>
+            <span class="location">/ {{ card-location }}</span>
+        </div>
 
-            <div class="event-data-content">
-                <div class="event-date-location-data-container">
-                    <time class="event-date" datetime="2025-11-09">01 jan 2024</time>
-                    <span class="location">/ Amsterdam</span>
-                </div>
+        {% render 'partials/link-href.liquid', link: card-href-link, linktext: 'DETAILS', class: "event-details-button" %}
+    </div>
+</article>
 
-            {% render 'partials/link-href.liquid', link: '/events/detail-event/1', linktext: 'DETAILS' class: "event-details-button" %}
-            </div>
-        </article>
-
-       <article class="event-item">
-            <p class="label">dda</p>
-            <h4 class="event-title">Ledenbijeenkomst</h4>
-
-            <div class="event-data-content">
-                <div class="event-date-location-data-container">
-                    <time class="event-date" datetime="2025-11-09">01 jan 2024</time>
-                    <span class="location">/ Amsterdam</span>
-                </div>
-
-            {% render 'partials/link-href.liquid', link: '/events/detail-event/1', linktext: 'DETAILS' class: "event-details-button" %}
-            </div>
-        </article>
-
-        <article class="event-item">
-            <p class="label">dda</p>
-            <h4 class="event-title">Ledenbijeenkomst</h4>
-
-            <div class="event-data-content">
-                <div class="event-date-location-data-container">
-                    <time class="event-date" datetime="2025-11-09">01 jan 2024</time>
-                    <span class="location">/ Amsterdam</span>
-                </div>
-
-            {% render 'partials/link-href.liquid', link: '/events/detail-event/1', linktext: 'DETAILS' class: "event-details-button" %}
-            </div>
-        </article>
-
-        <article class="event-item">
-            <p class="label">dda</p>
-            <h4 class="event-title">Ledenbijeenkomst</h4>
-
-            <div class="event-data-content">
-                <div class="event-date-location-data-container">
-                    <time class="event-date" datetime="2025-11-09">01 jan 2024</time>
-                    <span class="location">/ Amsterdam</span>
-                </div>
-
-            {% render 'partials/link-href.liquid', link: '/events/detail-event/1', linktext: 'DETAILS' class: "event-details-button" %}
-            </div>
-        </article>
-
-        <article class="event-item">
-            <p class="label">dda</p>
-            <h4 class="event-title">Ledenbijeenkomst</h4>
-
-            <div class="event-data-content">
-                <div class="event-date-location-data-container">
-                    <time class="event-date" datetime="2025-11-09">01 jan 2024</time>
-                    <span class="location">/ Amsterdam</span>
-                </div>
-
-            {% render 'partials/link-href.liquid', link: '/events/detail-event/1', linktext: 'DETAILS' class: "event-details-button" %}
-            </div>
-        </article>
-    </section>

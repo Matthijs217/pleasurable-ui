@@ -1,6 +1,5 @@
-<div class="event-main-container">
 
-      {% for headerEvent in headerEvents %}
+      {% comment %} {% for headerEvent in headerEvents %}
         <section class="card-child-container">
           <figure class="card-image-container">
             {% if headerEvent.photo and headerEvent.photo.id %}
@@ -56,12 +55,15 @@
         {% render 'partials/link-href.liquid', link: '/events/detail-event/1', linktext: 'DETAILS', class: "card-btn"  %}
 
       </section>
-    {% endfor %}
+    {% endfor %} {% endcomment %}
 
-   
+{% comment %} <div class="event-main-container">
 
 
-    {% comment %} partial list met events {% endcomment %}
+    {% render 'partials/foto-card.liquid' %}
+
+
+
     {% render 'partials/event-list.liquid' %}
 
-</div>
+</div> {% endcomment %}
