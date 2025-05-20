@@ -1,0 +1,108 @@
+.container {
+    border-top: var(--border);
+}
+
+/* filter-buttons */
+.filter-system-container {
+    padding: var(--spacing-40) var(--spacing-32);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-16);
+    align-items: center;
+    border-top: var(--border);
+
+    @media (min-width:600px) {
+        flex-direction: row;
+        padding: var(--spacing-48);
+    }
+}
+
+.search-bar-container {
+    display: flex;
+    flex-direction: row;
+    gap: var(--spacing-8);
+}
+
+.filter-btn {
+    display: flex;
+    flex-direction: row;
+    gap: var(--spacing-8);
+
+    @media (min-width:600px) {
+        margin-left: auto;
+    }
+}
+
+
+/* events list items */
+.event-items-container {
+    padding: var(--spacing-40) var(--spacing-32);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-24);
+    border-top: var(--border);
+}
+
+
+/* reload link */
+.more-events-link {
+    padding: var(--spacing-40) var(--spacing-32);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-8);
+    text-transform: uppercase;
+    border-top: var(--border);
+}
+
+/* past events container */
+
+.past-events-container {
+    border-top: var(--border);
+    padding: var(--spacing-40) var(--spacing-32);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-24);
+}
+
+.past-events-title {
+    line-height: 1em;
+}
+
+.past-event-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-16);
+    border-bottom: var(--border);
+    padding-bottom: var(--spacing-24);
+
+    @media (min-width: 1000px) {
+        padding-bottom: var(--spacing-24);
+    }
+}
+
+.past-event-date,
+.past-event-location {
+    font-family: var(--secondary-font);
+}
+
+.already-passed {
+    text-transform: uppercase;
+    color: var(--blue);
+}
+
+.past-event-item:last-child {
+    border-bottom: none;
+}
+
+.past-event-data-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    gap: var(--spacing-8);
+
+    @media (min-width:600px) {
+        grid-template-columns: 1fr 1fr;
+    }
+}
