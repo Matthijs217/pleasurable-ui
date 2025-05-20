@@ -1,0 +1,161 @@
+{% render 'partials/head.liquid' %}
+<script src="scripts/script.js" defer></script>
+
+<main>
+{% render 'partials/header.liquid' %}
+
+<section class="hero hero-border">
+    {% render 'partials/backtohome-redirect.liquid' %}
+
+        <h1 class="hero-title">events</h1>
+        <p class="hero-text">Spraakmakende sprekers. Inspirerende kennissessies. Events waar je écht bij wilt zijn. En waar je al je vakgenoten weer spreekt. Versterk je bureau met kennis en inspiratie over bureaumanagement, leiderschap en de laatste ontwikkelingen.</p>
+</section>
+
+<div class="container">
+  {% for eventcard in eventCards %}
+    {% render 'partials/foto-card.liquid',
+      img-src: eventcard.photo.id,
+      img-width: eventcard.photo.width,
+      img-height: eventcard.photo.height,
+      card-label: eventcard.title,
+      card-title: eventcard.title,
+      card-date: eventcard.date,
+      card-location: eventcard.location,
+      image-alt: eventcard.title,
+      card-href-link: "event/detail-event/" | append: eventcard.id
+    %}
+  {% endfor %}
+</div>
+
+<form class="filter-system-container" method="get" action="/events">
+
+    <div class="search-bar-container">
+        {% render 'partials/input-type.liquid' %}
+
+        <button class="select-filter-submit-button" id="filter-submit-button" type="submit">Verzenden</button>
+    </div>
+
+    <div class="filter-btn">
+        {% render 'partials/filter-button.liquid',
+            select-btn-1-label: "thema's",
+            select-btn-1-name: "theme",
+            select-btn-1-id: "filter-theme"
+            btn-1-value-1: "THEMA'S",
+            btn-1-value-2: "muziek",
+            btn-1-value-3: "webinair",
+            btn-1-value-4: "creatief",
+            btn-1-value-5: "carriere",
+            btn-1-value-6: "sport",
+        %}
+
+        {% render 'partials/filter-button.liquid',
+            select-btn-1-label: "locaties",
+            select-btn-1-name: "location",
+            select-btn-1-id: "filter-location"
+            btn-1-value-1: "LOCATIE",
+            btn-1-value-2: "Ermelo",
+            btn-1-value-3: "Arnhem",
+            btn-1-value-4: "Online",
+            btn-1-value-5: "Utrecht",
+            btn-1-value-6: "Eindhoven",
+            btn-1-value-7: "Austin",
+            btn-1-value-8: "N.n.b",
+            value-nnb: "null"
+        %}
+    </div>
+</form>
+
+<div class="event-items-container">
+  {% for event in events %}
+    {% render 'partials/event-list.liquid',
+      card-label: event.title,
+      card-title: event.title,
+      card-date: event.date,
+      card-location: event.location,
+      card-href-link: "event/detail-event/" | append: event.id
+    %}
+  {% endfor %}
+</div>
+  
+
+<a class="more-events-link" href="">Meer events laden
+    <img src="img/reload-icon.svg" alt="reload-icon" width="16" height="16">
+</a>
+
+<section class="past-events-container">
+  <h4 class="past-events-title">PLAATSGEVONDEN EVENTS:</h4>
+
+  <article class="past-event-item">
+    {% render 'partials/category-label.liquid', text: "DDA" %} 
+    <h4 class="past-event-title">Ledenbijeenkomst</h4>
+
+    <div class="past-event-date-location-data-container">
+      <time class="past-event-date">2025-01-02</time>
+      <span class="past-event-location">/ Amsterdam</span>
+    </div>
+
+    <div class="past-event-data-content">
+      <p class="already-passed">heeft plaatsgevonden</p>
+      {% render 'partials/link-href.liquid', link: card-href-link, linktext: 'DETAILS', class: "event-details-button" %}
+    </div>
+  </article>
+
+  <article class="past-event-item">
+    {% render 'partials/category-label.liquid', text: "TECH" %} 
+    <h4 class="past-event-title">Maak je eigen game</h4>
+
+    <div class="past-event-date-location-data-container">
+      <time class="past-event-date">2024-03-04</time>
+      <span class="past-event-location">/ Antwerpen</span>
+    </div>
+
+    <div class="past-event-data-content">
+      <p class="already-passed">heeft plaatsgevonden</p>
+      {% render 'partials/link-href.liquid', link: card-href-link, linktext: 'DETAILS', class: "event-details-button" %}
+    </div>
+  </article>
+
+  <article class="past-event-item">
+    {% render 'partials/category-label.liquid', text: "MEETUP" %} 
+    <h4 class="past-event-title">Creative design week</h4>
+
+    <div class="past-event-date-location-data-container">
+      <time class="past-event-date">2024-06-13</time>
+      <span class="past-event-location">/ Leiden</span>
+    </div>
+
+    <div class="past-event-data-content">
+      <p class="already-passed">heeft plaatsgevonden</p>
+      {% render 'partials/link-href.liquid', link: card-href-link, linktext: 'DETAILS', class: "event-details-button" %}
+    </div>
+  </article>
+</section>
+
+<a class="more-events-link" href="">Meer events laden
+    <img src="img/reload-icon.svg" alt="reload-icon" width="16" height="16">
+</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% render 'partials/news-ad.liquid', message: "Meld je aan voor onze nieuwsbrief", submit: "aanmelden" %}
+{% render 'partials/partner-ad.liquid', submit: "WORD PARTNER" %}
+{% render 'partials/footer.liquid' %}
+
+</main>

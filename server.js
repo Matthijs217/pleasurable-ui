@@ -45,8 +45,40 @@ app.get('/', async function (request, response) {
 })
 
 app.get('/events', async function (request, response) {
-  response.render('events.liquid')
-})
+  
+  const apiResponseEventCards = await fetch('https://fdnd-agency.directus.app/items/dda_events?filter[id][_in]=5,3,6&fields=*,photo.id,photo.width,photo.height');
+  const apiResponseEventCardsJSON = await apiResponseEventCards.json();
+
+  const { theme, location } = request.query;
+  let apiResponse;
+
+  console.log("test", request.query);
+
+  let directusApi = 'https://fdnd-agency.directus.app/items/dda_events';
+
+  // Kijkt of location of theme een waarde hebben. Is dat het geval wordt in de directusapi value de ? toegevoegd. Hiermee kunnen filters toepassen
+  if (location || theme) {
+    directusApi += '?';
+
+    // Hier kijkt er of theme een waarde heeft en pakt hij de directus filter syntax en zet de waarde van de theme daarin.
+    if (theme) {
+      directusApi += 'filter[theme][_eq]=' + request.query.theme;
+    }
+
+    // Hier kijkt er of de location een waarde heeft en of ook is gefiltert op theme. zo ja, dan wordt de & toegevoegt zodat er nog een filter in de url kan worden toegevoegd
+    if (location) {
+      if (theme) directusApi += '&';
+      directusApi += 'filter[location][_eq]=' + request.query.location;
+    }
+  }
+
+  console.log(directusApi)
+  apiResponse = await fetch(directusApi);
+  const apiResponseJSON = await apiResponse.json();
+
+  response.render('events.liquid', { eventCards: apiResponseEventCardsJSON.data, events: apiResponseJSON.data });
+});
+
 
 app.get('/leden', async function (request, response) {
   response.render('leden.liquid')
