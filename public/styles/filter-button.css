@@ -3,14 +3,16 @@
       display: inline-block;
   }
 
-  .select-button-1,
-  .select-button-2 {
-      padding: 1em 5em 1em 1em;
+  .select-button-1 {
+      padding: 1em 4em 1em 1em;
       background-color: var(--white);
       border: var(--border);
       color: var(--black);
       cursor: pointer;
       appearance: none;
+      font-family: "MartianMono", monospace;
+
+      
 
       &:hover {
           color: var(--blue);
