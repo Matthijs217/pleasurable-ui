@@ -1,0 +1,44 @@
+{% render 'partials/head.liquid' %}
+{% assign pageTitle = lidDetails.title | append: " - Dutch Digital Agencies" %}
+{% render 'partials/header.liquid', pageTitle: pageTitle %}
+
+<main class="lid-details-main">
+    <section class="page-title">
+        <a href="/leden">
+        <img src="/img/arrow-left-black.svg" alt="" width="16" height="16">terug naar home
+        </a>
+    </section>
+
+    {% if lidDetails %}
+        <section class="lid-info" >
+            <h1 style="--name: vn{{ lidDetails.id }};" class="lid-details-title">{{ lidDetails.title }}</h1>
+            <img class="lid-image" src="https://fdnd-agency.directus.app/assets/{{ lidDetails.photo }}" alt="{{ lidDetails.title }}" width="1000" height="500">
+            <p>{{ lidDetails.description }}</p>
+        </section>
+       
+      {% else %}
+        <p>Lid niet gevonden.</p>
+    {% endif %}
+
+        
+    <section class="vacatures">
+        <h2>vacatures</h2>
+    </section>
+
+    <section class="cases">
+        <h2>cases</h2>
+    </section>
+
+    <section class="contact">
+        <h2>contact</h2>
+        <p class="text">{{ lidDetails.title }}</p>
+        {% assign addressDetails = lidDetails.address | split: " "  %}
+        {% comment %} TODO: get first two of array, get everything after the first 2 {% endcomment %}
+        <p class="text">{{addressDetails[0] }} {{addressDetails[1] }}<br>
+        {{ addressDetails[2] }} {{ addressDetails[3] }} {{ addressDetails[4] }} {{ addressDetails[5] }}
+        </p>
+        <p class="text"><a href="{{ lidDetails.phone }}">{{ lidDetails.phone }}</p></a>
+        <p class="text"><a href="mailto:{{ lidDetails.email }}">{{ lidDetails.email }}</p></a>
+    </section>
+</main>
+{% render 'partials/footer.liquid' %}
