@@ -95,11 +95,11 @@ app.get('/leden', async function (request, response) {
   // Als sorteren is opgegeven, voeg dat toe
   if (sorteren && sorteren !== '') {
     const connector = apiUrl.includes('?') ? '&' : '?';
-    if (sorteren === 'az') {
+    if (sorteren === 'A-Z') {
       apiUrl += `${connector}sort=title`;
-    } else if (sorteren === 'za') {
+    } else if (sorteren === 'Z-A') {
       apiUrl += `${connector}sort=-title`;
-    } else if (sorteren === 'colleagues') {
+    } else if (sorteren === 'Aantal werknemers') {
       apiUrl += `${connector}sort=colleagues`;
     }
   }
