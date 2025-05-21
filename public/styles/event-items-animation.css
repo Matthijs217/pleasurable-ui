@@ -4,13 +4,13 @@
     /* Dit is de naam van het element waarmee je aangeeft hoelang de scrool duurt. 
     je geeft de classname van dat element waardoor nu duidelijk is hoelang dit element is  */
     view-timeline-name: --test-class;
-
+    /* welke richting de scroll naartoe gaat dit geval horizontaal  */
     view-timeline-axis: block;
 
     /* dit is de het element waarin je de scroll animatie wilt uitvoeren. dit is de class name van het element */
     animation-timeline: --test-class;
 
-    /* wanneer de animatie begint bij hoeveel proces het in het element is en hoeveel procent het covert */
+    /* wanneer de animatie begint bij hoeveel procent het in het element is en hoeveel procent het covert */
     animation-range: entry 3% cover 30%;
 }
 
