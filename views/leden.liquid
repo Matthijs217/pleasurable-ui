@@ -1,0 +1,187 @@
+{% render 'partials/head.liquid' %}
+<script src="scripts/script.js" defer></script>
+{% assign pageTitle = "Onze leden - Dutch Digital Agencies" %}
+{% render 'partials/header.liquid', pageTitle: pageTitle %}
+
+<main>
+
+    <section class="page-title-container">
+        <section class="page-title">
+            {% render 'partials/backtohome-redirect.liquid' %}
+            <h1>onze leden</h1>
+        </section>
+        
+        <section class="page-title-content">
+            <p class="text">De <span style=" --_size:{{ leden | size }}">{{ leden | size }}</span> beste digitale bureaus van Nederland zijn verenigd in Dutch Digital Agencies. Zet de juiste filters aan en zoek contact met het bureau dat het beste bij past bij jouw vraagstuk en uitdaging. Ook DDA lid worden? Ga dan naar deze pagina voor meer informatie.</p>
+        </section>
+    </section>
+    <section class="filter-container">
+        <section class="search-bar">
+            {% render 'partials/input-type.liquid', message: 'Zoek een bureau...' %}
+        </section> 
+        
+
+        <form class="filters" method="get" action="/leden">
+            <section class="provincie-filter">
+                {% render 'partials/filter-button.liquid', 
+                    select-btn-1-label: 'Selecteer een provincie',
+                    select-btn-1-name: 'Provincie',
+                    select-btn-1-id: 'Provincie',
+                    btn-1-value-1: 'Provincie',
+                    btn-1-value-2: 'Noord-Holland',
+                    btn-1-value-3: 'Zuid-Holland',
+                    btn-1-value-4: 'Groningen',
+                    btn-1-value-5: 'Friesland',
+                    btn-1-value-6: 'Drenthe',
+                    btn-1-value-7: 'Overijssel',
+                    btn-1-value-8: 'Flevoland',
+                    btn-1-value-9: 'Gelderland',
+                    btn-1-value-10: 'Utrecht',
+                    btn-1-value-11: 'Limburg',
+                    btn-1-value-12: 'Noord-Brabant',
+                    btn-1-value-13: 'Zeeland'
+                %}
+            </section>
+
+            <section class="omvang-filter">
+                {% render 'partials/filter-button.liquid', 
+                    select-btn-1-label: 'Selecteer een omvang',
+                    select-btn-1-name: 'Omvang',
+                    select-btn-1-id: 'Omvang',
+                    btn-1-value-1: '1-9',
+                    btn-1-value-2: '10-24',
+                    btn-1-value-3: '25-49',
+                    btn-1-value-4: '50-99',
+                    btn-1-value-5: '100-249',
+                    btn-1-value-6: '250+'
+                %}
+            </section>
+
+            <section class="sorteren-filter">
+                {% render 'partials/filter-button.liquid', 
+                    select-btn-1-label: 'Selecteer een omvang',
+                    select-btn-1-name: 'Sorteren',
+                    select-btn-1-id: 'Sorteren',
+                    btn-1-value-1: 'A-Z',
+                    btn-1-value-2: 'Z-A',
+                    btn-1-value-3: 'Aantal werknemers',
+                %}
+            </section>   
+
+            <button class="filter-submit-btn" id="filter-submit-button" type="submit">submit</button>
+        </form>
+    </section>
+
+    <ul class="leden-card-grid">
+    {% for lid in leden %}
+      <li class="leden-card" style="--name: vn{{ lid.id }};">
+        <img class="leden-card-img" loading="lazy" alt="{{ lid.title }}" src="https://fdnd-agency.directus.app/assets/{{ lid.photo }}" width="300" height="200">
+        <section class="leden-card-text"> 
+            <h2 class="leden-card-name">{{ lid.title | upcase }}</h2>
+            <p>{{ lid.address | split: " " | last | upcase }}</p>
+            <p>{{ lid.colleagues | upcase }} WERKNEMER{% if lid.colleagues > 1%}S{% endif %}</p>
+            <a href="/leden/lid/{{ lid.id }}">details
+                <img src="/img/arrow.svg" alt="" width="12" height="12">
+            </a>
+        </section>
+      </li>
+    {% endfor %}
+    </ul> 
+
+    <section class="lid-toevoegen-container">
+      <details>
+          <summary>Lid toevoegen</summary>
+          <form class="lid-toevoegen-form" action="/leden/nieuw/toevoegen" method="post" data-enhanced="form">
+                <label for="title">Agency Name</label>
+                <input id="title" placeholder="Funda" name="title" type="text" required>
+    
+                <label for="address">Agency Location</label>
+                <input id="address" placeholder="Amsterdam" name="address" type="text" required>
+    
+                <label for="colleagues">Agency Employees</label>
+                <input id="colleagues" placeholder="80" name="colleagues" type="text" required>
+  
+                <button type="submit">
+                    <span class="btn-label">SUBMIT</span>
+                </button>
+          </form>
+      </details>
+  </section>
+
+  <div class="pop-up" id="pop-up">
+    <p>Lid is toegevoegd!</p>
+  </div>  
+
+</main>
+
+<script type="module">
+    // We maken hieronder aannames over wat de browser ondersteunt
+    // Dus laten we deze eerst testen met Feature Detection
+    // https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Testing/Feature_detection
+    // Als er ergens op de pagina een formulier wordt gesubmit..
+    // (We maken hier gebruik van Event Delegation)
+    document.addEventListener('submit', async function(event) {
+
+    // Hou in een variabele bij welk formulier dat was
+    const form = event.target;
+
+    // Als dit formulier geen data-enhanced attribuut heeft, doe dan niks
+    // Dit doen we, zodat we sommige formulieren op de pagina kunnen 'enhancen'
+    // Data attributen mag je zelf verzinnen; dit is dus niet iets speciaals
+    // https://developer.mozilla.org/en-US/docs/Learn_web_development/Howto/Solve_HTML_problems/Use_data_attributes
+    if (!form.hasAttribute('data-enhanced')) {
+      return;
+    }
+
+    // Voorkom de standaard submit van de browser
+    // Let op: hiermee overschrijven we de default Loading state van de browser...
+    event.preventDefault();
+
+    let formData = new FormData(form)
+
+    form.classList.add('loader');
+    
+    // Doe een fetch naar de server, net als hoe de browser dit normaal zou doen
+    // Gebruik daarvoor het action en method attribuut van het originele formulier
+    // Inclusief alle formulierelementen
+    const response = await fetch(form.action, {
+    method: form.method,
+    body: new URLSearchParams(formData)
+    });
+
+    // Converteer de serverrespons naar JSON
+    const responseText = await response.text();
+
+    // Normaal zou de browser die HTML parsen en weergeven, maar daar moeten we nu zelf iets mee
+    // Parse de nieuwe HTML en maak hiervan een nieuw Document Object Model in het geheugen
+    const parser = new DOMParser();
+    const responseDOM = parser.parseFromString(responseText, 'text/html');
+    
+    console.log(responseDOM);
+    
+    // Zoek in die nieuwe DOM onze nieuwe state op, die we via Liquid hebben klaargemaakt
+    // We gebruiken hiervoor het data-enhanced attribuut, zodat we weten waar we naar moeten zoeken
+    // (Hierdoor kunnen we ook meerdere formulieren op dezelfde pagina gebruiken)
+    const nieuwLid = responseDOM.querySelector(".leden-card:last-of-type")
+  
+    form.classList.remove('loader');
+
+    // Overschrijf ons formulier met de nieuwe HTML
+    // Hier wil je waarschijnlijk de Loading state vervangen door een Success state
+    // form.outerHTML = newState.outerHTML;
+    let nieuwLeden = document.querySelector(".leden-card-grid")
+    nieuwLeden.insertAdjacentHTML("beforeend", nieuwLid.outerHTML);
+
+
+    let popUp = document.querySelector('.pop-up')
+    popUp.classList.add('show');
+
+    setTimeout(() => {
+        popUp.classList.remove('show');
+    }, 3000);
+
+});
+
+</script>
+
+{% render 'partials/footer.liquid' %}
