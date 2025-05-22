@@ -1,0 +1,292 @@
+{% render 'partials/head.liquid' %}
+<script src="scripts/script.js" defer></script>
+
+<main>
+{% render 'partials/header.liquid' %}
+
+<section class="hero-section">
+    <div class="link-button-hero">
+        {% render 'partials/backtohome-redirect.liquid' %}
+    </div>
+    {% if eventDetails.title %}
+        <h2 class="hero-section-title">{{ eventDetails.title }}</h2>
+    {% endif %}
+
+    {% if eventDetails %}
+    <p class="hero-section-date-location">
+        {{ eventDetails.date }} / {{ eventDetails.location }}
+    </p>
+{% endif %}
+
+
+</section>
+
+
+<div class="details-image-section">
+
+    <figure class="detail-image-container">
+      {% if eventDetails.photo.id %}
+        <picture>
+          <source media="(max-width: 480px)" type="image/avif" srcset="https://fdnd-agency.directus.app/assets/{{ eventDetails.photo.id }}?format=avif&width=480">
+          <source media="(max-width: 480px)" type="image/webp" srcset="https://fdnd-agency.directus.app/assets/{{ eventDetails.photo.id }}?format=webp&width=480">
+
+          <source media="(max-width: 768px)" type="image/avif" srcset="https://fdnd-agency.directus.app/assets/{{ eventDetails.photo.id }}?format=avif&width=768">
+          <source media="(max-width: 768px)" type="image/webp" srcset="https://fdnd-agency.directus.app/assets/{{ eventDetails.photo.id }}?format=webp&width=768">
+
+          <source media="(max-width: 1200px)" type="image/avif" srcset="https://fdnd-agency.directus.app/assets/{{ eventDetails.photo.id }}?format=avif&width=1100">
+          <source media="(max-width: 1200px)" type="image/webp" srcset="https://fdnd-agency.directus.app/assets/{{ eventDetails.photo.id }}?format=webp&width=1100">
+
+          <img class="details-section-image" style="view-transition-name: event-image-{{ eventDetails.id }}" src="https://fdnd-agency.directus.app/assets/{{ eventDetails.photo.id }}" alt="{{ eventDetails.title }}"
+            width="{{ eventDetails.photo.width }}" height="{{ eventDetails.photo.height }}">
+        </picture>
+      {% else %}
+        <img class="details-section-image" style="view-transition-name: event-image-{{ eventDetails.id }}" src="/img/Image.png" alt="stock afbeelding">
+      {% endif %}
+    </figure>
+
+</div>
+
+
+<section class="detail-event-content">
+    <div class="details-text-content">
+        {% if eventDetails.intro %}
+        <p class="details-section-intro">{{ eventDetails.intro }}</p>
+        {% endif %}
+        
+        {% if eventDetails.content %}
+            <p class="details-section-content">{{ eventDetails.content }}</p>
+        {% endif %}
+    </div>
+
+    <article class="agenda">
+        <h2 class="agenda-title">AGENDA</h2>
+        <table class="agenda-time-table">
+            <tr><td>Intro and possibly more text</td><td>09:00 - 10:00</td></tr>
+            <tr><td>Spreker 1</td><td>00:00 - 00:00</td></tr>
+            <tr><td>Spreker 2</td><td>00:00 - 00:00</td></tr>
+            <tr><td>Q&A</td><td>00:00 - 00:00</td></tr>
+        </table>
+    </article>
+
+    {% if eventDetails.id %}
+        <article class="sign-up-for-event-container">
+        <h2 class="sign-up-form-title">INSCHRIJVEN</h2>
+        <form class="sign-up-form" action="/events/detail-event/{{ eventDetails.id }}" method="post" data-enhanced="{{ eventDetails.id }}">
+
+            <div class="input-bar-container">
+                <input type="text" name="title" class="input-bar input-field event-sign-bar" placeholder="" id="title" required>
+                <label class="form-label" for="title">Functie</label>
+            </div>
+
+            <div class="input-bar-container">
+                <input type="text" name="name" class="input-bar input-field event-sign-bar" placeholder="" id="name" required>
+                <label class="form-label" for="name">Voornaam</label>
+            </div>
+
+            <div class="input-bar-container">
+                <input type="text" name="infix" class="input-bar input-field event-sign-bar" placeholder="" id="infix">
+                <label class="form-label" for="infix">Tussenvoegsel</label>
+            </div>
+
+            <div class="input-bar-container">
+                <input type="text" name="lastname" class="input-bar input-field event-sign-bar" placeholder="" id="lastname" required>
+                <label class="form-label" for="lastname">Achternaam</label>
+            </div>
+
+            <div class="input-bar-container">
+                <input type="email" name="email" class="input-bar input-field event-sign-bar" placeholder="" id="email" required>
+                <label class="form-label" for="email">E-mailadres</label>
+            </div>
+
+            <div class="input-bar-container">
+                <input type="tel" name="phone" class="input-bar input-field event-sign-bar" placeholder="" id="phone" required>
+                <label class="form-label" for="phone">Mobiel</label>
+            </div>
+
+            <div class="input-bar-container">
+                <input type="text" name="company" class="input-bar input-field event-sign-bar" placeholder="" id="company" required>
+                <label class="form-label" for="company">Bedrijfsnaam</label>
+            </div>
+
+            <input type="hidden" name="event" class="input-field input-bar" value="{{ eventDetails.id }}">
+
+            <div class="input-bar-container">
+                <input type="url" name="company_website" class="input-bar input-field event-sign-bar" placeholder="" id="company_website" required>
+                <label class="form-label" for="company_website">Bedrijfswebsite</label>
+            </div>
+
+            <div class="input-bar-container">
+                <input type="text" name="reason" class="input-bar input-field event-sign-bar" placeholder="" id="reason" required>
+                <label class="form-label" for="reason">Ik wil graag lid worden omdat:</label>
+            </div>
+
+            <div class="input-bar-container">
+                <input type="number" name="fte" class="input-bar input-field event-sign-bar" placeholder="" id="fte" min="0" required>
+                <label class="form-label" for="fte">FTE</label>
+            </div>
+
+            <div class="sign-up-button-container">
+                {% render 'partials/button.liquid', submit: "Schrijf me in" %}
+            </div>
+    </form>
+    </article>
+{% endif %}
+
+
+
+  <section class="participating-companies-container">
+      <h2 class="participating-companies-title">DEELNEMENDE BEDRIJVEN</h2>
+      <table class="participating-companies-table">
+        {% assign row_amount = 0 %}
+        {% assign column_amount = 0 %}
+        {% if companies.size == 0 %}
+          <tr>
+            <td>Nog geen bedrijven</td>
+          </tr>
+        {% else %}
+          {% for company in companies %}
+            {% if column_amount == 0 %}
+              <tr>
+            {% endif %}
+            <td>{{ company.company }}</td>
+            {% assign column_amount = column_amount | plus: 1 %}
+            {% if column_amount == 3 %}
+              {% assign column_amount = 0 %}
+              </tr>
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+      </table>
+  </section>
+
+    {% if eventDetails %}
+  <p class="detail-image-date-location"> {{ eventDetails.title }} {{ eventDetails.date }} / {{ eventDetails.location }}</p>
+            {% endif %}
+
+</section>
+
+<p id="succes">Uw inschrijving is verzonden!</p>
+
+  {% if successState %}
+    <p class="successtate">Je inschrijving is gelukt!</p>
+  {% endif %}
+  
+
+
+<script type="module">
+  // We maken hieronder aannames over wat de browser ondersteunt
+  // Dus laten we deze eerst testen met Feature Detection
+  // https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Testing/Feature_detection
+  if ('fetch' in window && 'DOMParser' in window) {
+  
+    // Als er ergens op de pagina een formulier wordt gesubmit..
+    // (We maken hier gebruik van Event Delegation)
+    document.addEventListener('submit', async function(event) {
+  
+      // Hou in een variabele bij welk formulier dat was
+      const form = event.target;
+  
+      // Als dit formulier geen data-enhanced attribuut heeft, doe dan niks
+      // Dit doen we, zodat we sommige formulieren op de pagina kunnen 'enhancen'
+      // Data attributen mag je zelf verzinnen; dit is dus niet iets speciaals
+      // https://developer.mozilla.org/en-US/docs/Learn_web_development/Howto/Solve_HTML_problems/Use_data_attributes
+      if (!form.hasAttribute('data-enhanced')) {
+        return;
+      }
+  
+      // Voorkom de standaard submit van de browser
+      // Let op: hiermee overschrijven we de default Loading state van de browser...
+      event.preventDefault();
+
+      form.classList.add("submitting");
+  
+      const loader = document.querySelector(".loader");
+      loader.classList.add("visible");
+      
+  
+      // Doe een fetch naar de server, net als hoe de browser dit normaal zou doen
+      // Gebruik daarvoor het action en method attribuut van het originele formulier
+      // Inclusief alle formulierelementen
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: new URLSearchParams(new FormData(form))
+      });
+  
+      // De server redirect op de normale manier, en geeft HTML terug
+      // (De server weet niet eens dat deze fetch via client-side JavaScript gebeurde)
+      const responseText = await response.text();
+  
+      // Normaal zou de browser die HTML parsen en weergeven, maar daar moeten we nu zelf iets mee
+      // Parse de nieuwe HTML en maak hiervan een nieuw Document Object Model in het geheugen
+      const parser = new DOMParser();
+      const responseDOM = parser.parseFromString(responseText, 'text/html');
+  
+      // Zoek in die nieuwe DOM onze nieuwe state op, die we via Liquid hebben klaargemaakt
+      // We gebruiken hiervoor het data-enhanced attribuut, zodat we weten waar we naar moeten zoeken
+      // (Hierdoor kunnen we ook meerdere formulieren op dezelfde pagina gebruiken)
+      const newState = responseDOM.querySelector('[data-enhanced="' + form.getAttribute('data-enhanced') + '"]');
+  
+      // Overschrijf ons formulier met de nieuwe HTML
+      // Hier wil je waarschijnlijk de Loading state vervangen door een Success state
+      form.outerHTML = newState.outerHTML;
+
+    //  https://www.w3schools.com/jsref/met_table_insertrow.asp  
+    //  https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableRowElement/insertCell
+
+      // voor company name in tabel zetten 
+      const companyName = form.querySelector('[name="company"]').value;
+      // console.log(companyName.value)
+      const table = document.querySelector('.participating-companies-table');
+      const lastRow = table.rows[table.rows.length - 1];
+
+      let row;
+      if (lastRow && lastRow.cells.length < 3) {
+        row = lastRow;
+      } else {
+        row = table.insertRow();
+      }
+
+      const cell = row.insertCell();
+      cell.textContent = companyName;
+
+      // voor loader en succes message post
+      document.querySelector(".loader");
+      loader.classList.remove("visible");
+      
+      const successMessage = document.getElementById('succes');
+      if (successMessage) {
+        successMessage.style.display = 'block';
+
+        setTimeout(() => {
+          successMessage.style.display = 'none';
+        }, 3000);
+      }
+    });
+  }
+</script>
+
+<div class="location-information-container">
+    <figure class="event-location-image-container">
+    <picture>
+      <source type="image/avif" srcset="/img/video.avif">
+      <source type="image/webp" srcset="/img/video.webp">
+      <img class="event-location-image" loading="lazy" src="/img/video.png" alt="" height="360" width="360">
+    </picture>  
+  </figure>
+
+  <section class="text-location">
+    <h3 class="event-adress-information">Stadskasteel Oudaen Hoeven<span class="event-location-container"></h3>
+
+    <div class="sign-up-button-container">
+        {% render 'partials/button.liquid', submit: "ROUTE OP GOOGLE MAPS" %}
+    </div>
+  </section>
+
+
+</div>
+
+
+
+
+
+{% render 'partials/footer.liquid' %}
