@@ -1,0 +1,322 @@
+@view-transition{
+    navigation: auto;
+}
+
+.leden-card { view-transition-name: var(--name); }
+.lid-details-title { view-transition-name: var(--name); }
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* title container */
+.page-title-container{
+    border-bottom: solid var(--black) 1px;
+    width: 100%;
+    padding: var(--spacing-24);
+}
+
+.page-title-content{
+    margin-top: var(--spacing-24);
+    max-width: 90ch;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.page-title{
+    display: flex;
+    flex-direction: column;
+    a{
+        color: var(--black);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--spacing-8);
+        text-transform: uppercase;
+
+    }
+    a img{
+        width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+    }
+    h1{
+        display: flex;
+        justify-content: center;
+        margin-top: var(--spacing-24);
+    }
+}
+
+.filter-container{
+    border-bottom: solid 1px var(--black);
+    padding: var(--spacing-24);
+}
+
+.filter-submit-btn{
+    height: fit-content;
+    padding: var(--spacing-8);
+    text-transform: uppercase;
+    display: flex;
+}
+
+.filters{
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    flex-wrap: wrap;
+    margin-top: var(--spacing-16);
+}
+
+.search-bar > input{
+    border: none;
+    border-bottom: 1px solid var(--black);
+    color: var(--black);
+    text-transform: uppercase;
+}
+
+.provincie-filter, .omvang-filter, .sorteren-filter {
+
+}
+
+/* ledencards */
+.leden-card-grid {
+    display: grid;
+    grid-template-columns: 1fr; 
+    grid-template-rows: auto;
+    list-style: none;
+    width: 100%;
+}
+
+@media (min-width: 700px) {
+    .leden-card-grid {
+        grid-template-columns: 1fr 1fr; 
+    }
+    
+}
+
+@media (min-width: 1340px) {
+    .leden-card-grid {
+        grid-template-columns: 1fr 1fr 1fr; 
+    }
+}
+
+.leden-card{
+    border-right: solid 1px var(--black);
+    border-bottom: solid 1px var(--black);
+    width: 100%;
+    padding: var(--spacing-24);
+    a{
+        color: var(--blue);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: fit-content;
+        margin-top: var(--spacing-40);
+        text-transform: uppercase;
+        img{
+            width: 15px;
+            height: 15px;
+            border: none;
+        }
+    }
+    p{
+        margin-top: var(--spacing-16);
+    }
+}
+
+.leden-card-name{
+    word-break: break-word;
+    margin-top: var(--spacing-16);
+}
+
+.leden-card-img{
+    border: solid 1px var(--black);
+    object-fit: cover;
+    width: 100%;
+}
+
+#filter-submit-button{
+    border: solid black 1px;
+    background: none;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+/* lid toevoegen */
+.lid-toevoegen-form{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    margin: 1em;
+
+    input{
+        border: solid black 1px;
+        background-color: white;
+        padding: 0.5em;
+    }
+
+    button{
+        margin-top: 1em;
+        width: max-content;
+        border: solid black 1px;
+        background-color: white;
+        padding: 0.5em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        position: relative;
+        gap: 1em;
+    }
+}
+    
+.lid-toevoegen-container{
+    padding: 2em;
+}
+
+summary::before {
+	content: '+';
+	margin-left: 0.5em;
+    font-size: 25px;
+    transition: transform 0.3s ease;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+details summary::-webkit-details-marker {
+    display:none;
+}
+
+details[open] summary::before {
+	transform: rotate(45deg);
+}
+
+summary{
+    display: flex;
+    align-items: center;
+	cursor: pointer;
+	gap: 0.5em;
+    font-weight: bold;
+}
+
+/* loadingstate */
+.loader button span {
+    border: 10px solid #f3f3f3;
+    border-top: 10px solid black;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    animation: spin .7s cubic-bezier(.21,-0.03,.08,.91) infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.pop-up{
+    border: solid rgb(3, 210, 3) 1px;
+    background-color: rgb(131, 255, 131);
+    color: green;
+    width: fit-content;
+    padding: 0 1em 0 1em;
+    border-radius: 10px;
+    position: fixed;
+    margin-top: 1em;
+    top: 0;
+    margin-left: 33%;
+    text-transform: uppercase;
+    display: none;
+}
+
+.show{
+    display: block;
+}
+
+.visually-hidden {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}
+
+/* detailpagina */
+.lid-details-main{
+    padding: 1em;
+}
+
+.lid-image{
+    width: 100%;
+    object-fit: cover;
+    border: solid var(--black) 1px;
+}
+
+.lid-details-title{
+    display: flex;
+    justify-content: center;
+    margin-top: 0;
+    text-align: center;
+    width: fit-content;
+    margin-inline: auto;
+}
+
+.contact a, p{
+    color: var(--black);
+}
+
+
+/* Optel animatie */
+@property --_cv {
+    syntax: '<integer>';
+    inherits: false;
+    initial-value: 0;
+}
+  
+@keyframes counter {
+    from {
+      --_cv: 0;
+    }
+    to {
+      --_cv: var(--_value);
+    }
+}
+  
+.counter {
+    --_cv: 0;
+    --_value: 0; 
+  
+    counter-reset: count var(--_cv);
+    font-variant-numeric: tabular-nums; 
+    animation: counter 5s forwards;
+    animation-timing-function: ease-out;
+}
+  
+.counter::after {
+    content: counter(count);
+}
+
+
+/*   
+  @supports not (initial-value: 0) {
+    .counter {
+      counter-reset: count {{ leden | size }};
+    }
+  } */
+
+
+  
+
+
+      
+
+
+

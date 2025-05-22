@@ -81,13 +81,72 @@ app.get('/events', async function (request, response) {
   response.render('events.liquid', { eventCards: apiResponseEventCardsJSON.data, events: apiResponseJSON.data });
 });
 
-
+// leden pagina post/get
 app.get('/leden', async function (request, response) {
-  response.render('leden.liquid')
+  // Verkrijg de filters uit de queryparameters
+  const { provincie, omvang, sorteren } = request.query;
+
+  // Basis URL voor de API-aanroep
+  let apiUrl = 'https://fdnd-agency.directus.app/items/dda_agencies';
+
+  // Als een provincie is opgegeven, voeg die toe aan de filter
+  if (provincie && provincie !== '') {
+    apiUrl += `?filter[province_string][_eq]=${provincie}`;
+  }
+
+  // Als sorteren is opgegeven, voeg dat toe
+  if (sorteren && sorteren !== '') {
+    const connector = apiUrl.includes('?') ? '&' : '?';
+    if (sorteren === 'A-Z') {
+      apiUrl += `${connector}sort=title`;
+    } else if (sorteren === 'Z-A') {
+      apiUrl += `${connector}sort=-title`;
+    } else if (sorteren === 'Aantal werknemers') {
+      apiUrl += `${connector}sort=colleagues`;
+    }
+  }
+
+  // Haal de data op van de API
+  const apiResponse = await fetch(apiUrl);
+  const apiResponseJSON = await apiResponse.json();
+
+  // Render de data naar de view
+  response.render('leden.liquid', {leden: apiResponseJSON.data});
+});
+
+app.post('/leden/nieuw/toevoegen/', async function (request, response) {
+  console.log("ontvangen body:", request.body)
+  await fetch('https://fdnd-agency.directus.app/items/dda_agencies', {
+        method: 'POST',
+        body: JSON.stringify({
+          title: request.body.title,
+          address: request.body.address,
+          colleagues: request.body.colleagues,
+        }),
+        headers: {
+          'Content-Type': 'application/json;charset=UTF-8'
+        }
+      });
+      response.redirect(303, '/leden?success=Lid is toegevoegd!');
+})
+
+app.get('/leden/lid/:id', async function (request, response) {
+  
+  const apiResponse = await fetch('https://fdnd-agency.directus.app/items/dda_agencies/' + request.params.id)
+  const apiResponseJSON = await apiResponse.json() 
+
+  response.render('lid.liquid', { lidDetails: apiResponseJSON.data });
 })
 
 app.get('/overons', async function (request, response) {
-  response.render('overons.liquid')
+
+  const apiResponseTeams = await fetch('https://fdnd-agency.directus.app/items/dda_team?fields=*,photo.id,photo.width,photo.height');
+  const apiResponseTeamsJSON = await apiResponseTeams.json()
+
+  const ledenResponse = await fetch ('https://fdnd-agency.directus.app/items/dda_agencies')
+  const ledenResponseJSON = await ledenResponse.json()
+
+  response.render('overons.liquid', { leden: ledenResponseJSON.data, teams: apiResponseTeamsJSON.data });
 })
 
 app.get('/publicaties', async function (request, response) {
