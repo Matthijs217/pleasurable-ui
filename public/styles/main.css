@@ -7,7 +7,7 @@ body {
     }
 }
 
-main {
+.main-home {
     @media (min-width: 481px) {
         border: var(--border);
     }
