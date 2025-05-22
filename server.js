@@ -137,7 +137,11 @@ app.get('/leden/lid/:id', async function (request, response) {
 })
 
 app.get('/overons', async function (request, response) {
-  response.render('overons.liquid')
+
+  const ledenResponse = await fetch ('https://fdnd-agency.directus.app/items/dda_agencies')
+  const ledenResponseJSON = await ledenResponse.json()
+
+  response.render('overons.liquid', { leden: ledenResponseJSON.data });
 })
 
 app.get('/publicaties', async function (request, response) {
