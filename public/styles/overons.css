@@ -78,3 +78,29 @@
         min-height: 600px;
     } 
 }
+
+/* organisation heading title section */
+.organisation-section-title {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-16);
+    justify-content: center;
+    align-items: center;
+    padding: var(--spacing-32);
+    gap: var(--spacing-24);
+    border-bottom: var(--border);
+}
+
+.organisation-section-heading {
+    text-align: center;
+    
+}
+
+.organisation-section-paragraph {
+    text-align: center;
+    max-width: 70ch;
+}
+
+
+
+
