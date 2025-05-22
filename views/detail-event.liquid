@@ -16,14 +16,11 @@
     <p class="hero-section-date-location">
         {{ eventDetails.date }} / {{ eventDetails.location }}
     </p>
-{% endif %}
-
-
+    {% endif %}
 </section>
 
 
 <div class="details-image-section">
-
     <figure class="detail-image-container">
       {% if eventDetails.photo.id %}
         <picture>
@@ -43,7 +40,6 @@
         <img class="details-section-image" style="view-transition-name: event-image-{{ eventDetails.id }}" src="/img/Image.png" alt="stock afbeelding">
       {% endif %}
     </figure>
-
 </div>
 
 
