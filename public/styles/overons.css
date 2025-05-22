@@ -89,6 +89,8 @@
     padding: var(--spacing-32);
     gap: var(--spacing-24);
     border-bottom: var(--border);
+    padding-top: var(--spacing-40);
+    padding-bottom: var(--spacing-40);
 }
 
 .organisation-section-heading {
