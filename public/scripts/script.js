@@ -15,6 +15,16 @@ const closeMenu = document.getElementById('toggle-menu-close');
         event.preventDefault();
 
         const header = document.querySelector('.header');
+        header.classList.toggle('nav-open')
+    })
+
+    
+const closeBtn = document.querySelector(".close-btn");
+const details = document.querySelector("details");
+
+    closeBtn.addEventListener('click', () => {
+        details.removeAttribute('open')
+    });
         const menu = document.querySelector('#menu');
 
         header.classList.toggle('nav-open');

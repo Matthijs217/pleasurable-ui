@@ -23,6 +23,8 @@ app.engine('liquid', engine.express())
 // Let op: de browser kan deze bestanden niet rechtstreeks laden (zoals voorheen met HTML bestanden)
 app.set('views', './views')
 
+
+
 app.get('/', async function (request, response) {
   let vacaturesResponseJSON
 
@@ -152,7 +154,12 @@ app.get('/publicaties', async function (request, response) {
 })
 
 app.get('/vacatures', async function (request, response) {
-  response.render('vacatures.liquid')
+  let vacaturesResponseJSON
+
+  const vacaturesResponse = await fetch(`https://fdnd-agency.directus.app/items/dda_agencies?fields=id,title,vacancies.*`)
+  vacaturesResponseJSON = await vacaturesResponse.json()
+
+  response.render('vacatures.liquid', { vacatures: vacaturesResponseJSON.data });
 })
 
 // Stel het poortnummer in waar Express op moet gaan luisteren
