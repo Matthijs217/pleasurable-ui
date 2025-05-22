@@ -1,7 +1,7 @@
 {% render 'partials/head.liquid' %}
 <script src="scripts/script.js" defer></script>
 
-<main>
+<main class="main-home">
 {% render 'partials/header.liquid' %}
 
 <section class="hero hero-border">
@@ -13,6 +13,7 @@
 
 <div class="cards-container">
   {% for eventcard in eventCards %}
+  {% assign event-link = "event/detail-event/" | append: eventcard.id %}
     {% render 'partials/foto-card.liquid',
       img-src: eventcard.photo.id,
       img-width: eventcard.photo.width,
@@ -22,7 +23,7 @@
       card-date: eventcard.date,
       card-location: eventcard.location,
       image-alt: eventcard.title,
-      card-href-link: "event/detail-event/" | append: eventcard.id
+      card-href-link: event-link
     %}
   {% endfor %}
 </div>
@@ -67,12 +68,13 @@
 
 <div class="event-items-container">
   {% for event in events %}
-    {% render 'partials/event-list.liquid', class: "test-class",
+  {% assign event-link = "event/detail-event/" | append: event.id %}
+    {% render 'partials/event-list.liquid',
       card-label: event.title,
       card-title: event.title,
       card-date: event.date,
       card-location: event.location,
-      card-href-link: "event/detail-event/" | append: event.id
+      card-href-link: event-link
     %}
   {% endfor %}
 </div>
