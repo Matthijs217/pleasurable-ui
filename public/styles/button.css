@@ -11,6 +11,7 @@
     cursor: pointer;
     appearance: none;
     font-family: "MartianMono", monospace;
+    text-transform: uppercase;
 
     display: flex;
     flex-direction: row;

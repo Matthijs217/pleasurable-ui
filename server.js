@@ -138,10 +138,13 @@ app.get('/leden/lid/:id', async function (request, response) {
 
 app.get('/overons', async function (request, response) {
 
-const apiResponseTeams = await fetch('https://fdnd-agency.directus.app/items/dda_team?fields=*,photo.id,photo.width,photo.height');
-const apiResponseTeamsJSON = await apiResponseTeams.json()
+  const apiResponseTeams = await fetch('https://fdnd-agency.directus.app/items/dda_team?fields=*,photo.id,photo.width,photo.height');
+  const apiResponseTeamsJSON = await apiResponseTeams.json()
 
-  response.render('overons.liquid', { teams: apiResponseTeamsJSON.data });
+  const ledenResponse = await fetch ('https://fdnd-agency.directus.app/items/dda_agencies')
+  const ledenResponseJSON = await ledenResponse.json()
+
+  response.render('overons.liquid', { leden: ledenResponseJSON.data, teams: apiResponseTeamsJSON.data });
 })
 
 app.get('/publicaties', async function (request, response) {
