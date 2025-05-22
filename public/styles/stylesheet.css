@@ -14,6 +14,13 @@
     box-sizing: border-box;
 }
 
+@view-transition{
+    navigation: auto;
+}
+
+.leden-card { view-transition-name: var(--name); }
+.lid-details-title { view-transition-name: var(--name); }
+
 body {
     /* Colors */
     --black: #222226;
@@ -81,7 +88,7 @@ h2,
   font-size: clamp(2.5rem, 5vw, var(--size-xl));
   font-weight: 600; /* stays semibold */
   letter-spacing: var(--letter-spacing);
-  line-height: 2.5rem;
+  line-height: clamp(1em, 5vw, var(--size-xl));
 }
 
 h3,
