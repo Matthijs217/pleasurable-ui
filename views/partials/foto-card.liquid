@@ -26,7 +26,7 @@
       <span>/ {{ card-location }}</span>
     </time>
 
-    <h3 class="card-title">{{ card-title }}</h3>
+    <h3 class="card-title {{ class }}">{{ card-title }}</h3>
 
     <div class="card-container-button">
       {% render 'partials/link-href.liquid', link: card-href-link, linktext: 'DETAILS' %} 
