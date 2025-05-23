@@ -15,6 +15,14 @@ De instructie vind je in: [INSTRUCTIONS.md](https://github.com/fdnd-task/pleasur
 - Witruimtes
 - Nesting (maar niet teveel)
 
+
+## Moskou labels op prioriteit
+
+- Must have -- PO1
+- Should have -- PO2
+- Wont have -- PO3
+
+
 ## Pull requests
 
 Voor pull requests gebruiken we de template van fdnd-agency
@@ -24,12 +32,17 @@ Voor pull requests gebruiken we de template van fdnd-agency
 
 ## Inhoudsopgave
 
-  * [Beschrijving](#beschrijving)
-  * [Gebruik](#gebruik)
-  * [Kenmerken](#kenmerken)
-  * [Installatie](#installatie)
-  * [Bronnen](#bronnen)
-  * [Licentie](#licentie)
+- [Pleasurable User Interface](#pleasurable-user-interface)
+  - [Code conventies](#code-conventies)
+  - [Moskou labels op prioriteit](#moskou-labels-op-prioriteit)
+  - [Pull requests](#pull-requests)
+  - [Inhoudsopgave](#inhoudsopgave)
+  - [Beschrijving](#beschrijving)
+  - [Gebruik](#gebruik)
+  - [Kenmerken](#kenmerken)
+  - [Installatie](#installatie)
+  - [Bronnen](#bronnen)
+  - [Licentie](#licentie)
 
 ## Beschrijving
 <!-- Bij Beschrijving staat kort beschreven wat voor project het is en wat je hebt gemaakt -->
