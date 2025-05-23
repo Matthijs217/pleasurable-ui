@@ -462,7 +462,7 @@
 .submitting {
     opacity: 0.3;
     transition: opacity 0.3s ease-in-out;
-=======
+}
 /* scroll animatie */
 .test-class {
     animation: scrollding ease-in;

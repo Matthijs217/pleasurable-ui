@@ -70,7 +70,7 @@
 <div class="event-items-container">
   {% for event in events %}
   {% assign event-link = "event/detail-event/" | append: event.id %}
-    {% render 'partials/event-list.liquid',
+    {% render 'partials/event-list.liquid', class: "test-class",
       card-label: event.title,
       card-title: event.title,
       card-date: event.date,
