@@ -18,8 +18,33 @@
 
     <section class="over-ons-video-text-section">
         <section class="over-ons-video-section">
-            <img src="/img/over-ons-video.png" alt="Over ons Video" width="1000" height="500">
-
+            <picture>
+                <source 
+                  srcset="
+                    /img/over-ons-video-800.webp 800w,
+                    /img/over-ons-video-1200.webp 1200w,
+                    /img/over-ons-video-1600.webp 1600w,
+                    /img/over-ons-video-2300.webp 2300w
+                  "
+                  sizes="100vw"
+                  type="image/webp"
+                >
+                <img
+                  src="/img/over-ons-video-2300.jpg"
+                  srcset="
+                    /img/over-ons-video-800.jpg 800w,
+                    /img/over-ons-video-1200.jpg 1200w,
+                    /img/over-ons-video-1600.jpg 1600w,
+                    /img/over-ons-video-2300.jpg 2300w
+                  "
+                  sizes="100vw"
+                  alt="Over ons Video"
+                  width="2300"
+                  height="1300"
+                  loading="lazy"
+                />
+            </picture>
+              
             <div class="over-ons-video-section-btn">
                 {% render 'partials/button.liquid', submit: 'Bekijk onze video', label: 'Bekijk onze video' %}
             </div>
