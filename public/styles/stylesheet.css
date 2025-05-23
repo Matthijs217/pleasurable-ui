@@ -96,7 +96,7 @@ h3,
   font-size: clamp(var(--size-md), 4vw, 3rem);
   font-weight: 400; /* regular on sm | semiBold on md+ */
   letter-spacing: var(--letter-spacing);
-  line-height: clamp(1.5rem, 3.5vw, 1em);
+  line-height: clamp(1em, 5vw, var(--size-md));
   text-transform: uppercase;
 }
 

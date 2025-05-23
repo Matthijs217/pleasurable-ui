@@ -1,9 +1,9 @@
 {% render 'partials/head.liquid' %}
 <script src="scripts/script.js" defer></script>
 {% assign pageTitle = "Onze leden - Dutch Digital Agencies" %}
-{% render 'partials/header.liquid', pageTitle: pageTitle %}
 
 <main>
+    {% render 'partials/header.liquid', pageTitle: pageTitle %}
 
     <section class="page-title-container">
         <section class="page-title">
@@ -12,7 +12,9 @@
         </section>
         
         <section class="page-title-content">
-            <p class="text">De <span style=" --_size:{{ leden | size }}">{{ leden | size }}</span> beste digitale bureaus van Nederland zijn verenigd in Dutch Digital Agencies. Zet de juiste filters aan en zoek contact met het bureau dat het beste bij past bij jouw vraagstuk en uitdaging. Ook DDA lid worden? Ga dan naar deze pagina voor meer informatie.</p>
+            <p>
+                De <span class="counter" style="--_value: {{ leden | size }};"></span> beste digitale bureaus van Nederland zijn verenigd in Dutch Digital Agencies. Zet de juiste filters aan en zoek contact met het bureau dat het beste bij past bij jouw vraagstuk en uitdaging.
+            </p>
         </section>
     </section>
     <section class="filter-container">
@@ -25,8 +27,8 @@
             <section class="provincie-filter">
                 {% render 'partials/filter-button.liquid', 
                     select-btn-1-label: 'Selecteer een provincie',
-                    select-btn-1-name: 'Provincie',
-                    select-btn-1-id: 'Provincie',
+                    select-btn-1-name: 'provincie',
+                    select-btn-1-id: 'provincie',
                     btn-1-value-1: 'Provincie',
                     btn-1-value-2: 'Noord-Holland',
                     btn-1-value-3: 'Zuid-Holland',
@@ -46,25 +48,27 @@
             <section class="omvang-filter">
                 {% render 'partials/filter-button.liquid', 
                     select-btn-1-label: 'Selecteer een omvang',
-                    select-btn-1-name: 'Omvang',
-                    select-btn-1-id: 'Omvang',
-                    btn-1-value-1: '1-9',
-                    btn-1-value-2: '10-24',
-                    btn-1-value-3: '25-49',
-                    btn-1-value-4: '50-99',
-                    btn-1-value-5: '100-249',
-                    btn-1-value-6: '250+'
+                    select-btn-1-name: 'omvang',
+                    select-btn-1-id: 'omvang',
+                    btn-1-value-1: 'Omvang',
+                    btn-1-value-2: '1-9',
+                    btn-1-value-3: '10-24',
+                    btn-1-value-4: '25-49',
+                    btn-1-value-5: '50-99',
+                    btn-1-value-6: '100-249',
+                    btn-1-value-7: '250+'
                 %}
             </section>
 
             <section class="sorteren-filter">
                 {% render 'partials/filter-button.liquid', 
                     select-btn-1-label: 'Selecteer een omvang',
-                    select-btn-1-name: 'Sorteren',
-                    select-btn-1-id: 'Sorteren',
-                    btn-1-value-1: 'A-Z',
-                    btn-1-value-2: 'Z-A',
-                    btn-1-value-3: 'Aantal werknemers',
+                    select-btn-1-name: 'sorteren',
+                    select-btn-1-id: 'sorteren',
+                    btn-1-value-1: 'Sorteren',
+                    btn-1-value-2: 'A-Z',
+                    btn-1-value-3: 'Z-A',
+                    btn-1-value-4: 'Aantal werknemers',
                 %}
             </section>   
 
@@ -112,6 +116,7 @@
     <p>Lid is toegevoegd!</p>
   </div>  
 
+  {% render 'partials/footer.liquid' %}
 </main>
 
 <script type="module">
@@ -183,5 +188,3 @@
 });
 
 </script>
-
-{% render 'partials/footer.liquid' %}

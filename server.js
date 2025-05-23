@@ -23,6 +23,8 @@ app.engine('liquid', engine.express())
 // Let op: de browser kan deze bestanden niet rechtstreeks laden (zoals voorheen met HTML bestanden)
 app.set('views', './views')
 
+
+
 app.get('/', async function (request, response) {
   let vacaturesResponseJSON
 
@@ -173,11 +175,11 @@ app.get('/leden', async function (request, response) {
   // Als sorteren is opgegeven, voeg dat toe
   if (sorteren && sorteren !== '') {
     const connector = apiUrl.includes('?') ? '&' : '?';
-    if (sorteren === 'az') {
+    if (sorteren === 'A-Z') {
       apiUrl += `${connector}sort=title`;
-    } else if (sorteren === 'za') {
+    } else if (sorteren === 'Z-A') {
       apiUrl += `${connector}sort=-title`;
-    } else if (sorteren === 'colleagues') {
+    } else if (sorteren === 'Aantal werknemers') {
       apiUrl += `${connector}sort=colleagues`;
     }
   }
@@ -215,7 +217,14 @@ app.get('/leden/lid/:id', async function (request, response) {
 })
 
 app.get('/overons', async function (request, response) {
-  response.render('overons.liquid')
+
+  const apiResponseTeams = await fetch('https://fdnd-agency.directus.app/items/dda_team?fields=*,photo.id,photo.width,photo.height');
+  const apiResponseTeamsJSON = await apiResponseTeams.json()
+
+  const ledenResponse = await fetch ('https://fdnd-agency.directus.app/items/dda_agencies')
+  const ledenResponseJSON = await ledenResponse.json()
+
+  response.render('overons.liquid', { leden: ledenResponseJSON.data, teams: apiResponseTeamsJSON.data });
 })
 
 app.get('/publicaties', async function (request, response) {
@@ -223,7 +232,12 @@ app.get('/publicaties', async function (request, response) {
 })
 
 app.get('/vacatures', async function (request, response) {
-  response.render('vacatures.liquid')
+  let vacaturesResponseJSON
+
+  const vacaturesResponse = await fetch(`https://fdnd-agency.directus.app/items/dda_agencies?fields=id,title,vacancies.*`)
+  vacaturesResponseJSON = await vacaturesResponse.json()
+
+  response.render('vacatures.liquid', { vacatures: vacaturesResponseJSON.data });
 })
 
 // Stel het poortnummer in waar Express op moet gaan luisteren

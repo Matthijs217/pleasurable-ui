@@ -1,0 +1,127 @@
+{% render 'partials/head.liquid' %}
+<script src="scripts/script.js" defer></script>
+
+<main class="main-home">
+    {% render 'partials/header.liquid', pageTitle: pageTitle %}
+
+    <section class="page-title-container">
+        <section class="page-title">
+            {% render 'partials/backtohome-redirect.liquid' %}
+            <h1>Over Ons</h1>
+        </section>
+        
+        <section class="page-title-content">
+            <p>
+                Dutch Digital Agencies (DDA) verenigt en vertegenwoordigt de <span class="counter" style="--_value: {{ leden | size }};"></span> beste digitale bureaus van Nederland. Samen maken we de wereld om ons heen steeds een beetje slimmer. Stap voor stap, klik na klik.
+            </p>
+        </section>
+    </section>
+
+    <section class="over-ons-video-text-section">
+        <section class="over-ons-video-section">
+            <picture>
+                <source 
+                  srcset="
+                    /img/over-ons-video-800.webp 800w,
+                    /img/over-ons-video-1200.webp 1200w,
+                    /img/over-ons-video-1600.webp 1600w,
+                    /img/over-ons-video-2300.webp 2300w
+                  "
+                  sizes="100vw"
+                  type="image/webp"
+                >
+                <img
+                  src="/img/over-ons-video-2300.jpg"
+                  srcset="
+                    /img/over-ons-video-800.jpg 800w,
+                    /img/over-ons-video-1200.jpg 1200w,
+                    /img/over-ons-video-1600.jpg 1600w,
+                    /img/over-ons-video-2300.jpg 2300w
+                  "
+                  sizes="100vw"
+                  alt="Over ons Video"
+                  width="2300"
+                  height="1300"
+                  loading="lazy"
+                />
+            </picture>
+              
+            <div class="over-ons-video-section-btn">
+                {% render 'partials/button.liquid', submit: 'Bekijk onze video', label: 'Bekijk onze video' %}
+            </div>
+        </section>
+
+        <section class="over-ons-text-section">
+            <p>
+                Dé branchevereniging voor digitale bureaus
+            </p>
+        </section>
+
+        <section class="over-ons-info-section">
+            <h3>
+                Sinds 2002 verbindt DDA de meest toonaangevende digitale bureaus. 
+            </h3>
+
+            <p class="over-ons-info-section-p1">
+                We delen kennis en ervaringen, prikkelen met nieuwe ideeën en digitale toepassingen en laten zien wat we kunnen. Samen versterken we onze snelgroeiende branche en ontwikkelen het talent van morgen. We zijn trots op onze kennis en ons werk. En vertellen daar graag over op events en in de media.
+            </p>
+                
+            <p class="over-ons-info-section-p2">
+                Met onze leden staan we voor het beste dat de Nederlandse digitale industrie te bieden heeft. We zijn bedenkers en makers, ontwerpers en coders, testers en verslimmers. Flexibele teams met flexibele denkers. Altijd bezig met de volgende oplossing
+            </p>
+
+            <div class="over-ons-info-section-btn">
+                {% render 'partials/button.liquid', submit: 'Bekijk onze leden', label: 'Bekijk onze leden'  %}
+            </div>
+        </section>
+    </section>
+
+    {% render 'partials/partner-carousel.liquid' %}
+
+    <section class="organisation-section-title">
+        <div class="organisation-section-label">
+            {% render 'partials/category-label.liquid', text: "organisatie" %}
+        </div>
+
+        <h3 class="organisation-section-heading xxl">Maak kennis met ons team</h3>
+
+        <p class="organisation-section-paragraph">Maak kennis met ons bestuur en ons dagelijkse management. Ons bestuur is een afspiegeling van onze leden en bestaat uit (voormalig) bureau eigenaren en directieleden van grote en kleinere, oude en jonge bureaus uit heel Nederland.</p>
+    </section>
+    
+    <section class="organisation-section-container">
+    {% for team in teams %}
+    <div class="employe-card-container">
+        <figure class="employe-image-container">
+            <picture>
+               <source type="image/avif" srcset="https://fdnd-agency.directus.app/assets/{{ team.photo.id }}?format=avif&width=600">
+               <source type="image/webp" srcset="https://fdnd-agency.directus.app/assets/{{ team.photo.id }}?format=webp&width=600">
+                <img class="employe-image" src="https://fdnd-agency.directus.app/assets/{{ team.photo.id }}" alt="{{ team.name }}" width="258" height="450">
+            </picture>
+        </figure>
+
+        <p class="employe-name">{{ team.name }}</p>
+
+        <div class="employe-specialty">
+            <small class="">{{ team.function }}</small>
+        </div>
+
+        <div class="connect-links">
+            <a href="mailto:{{ team.email }}" class="link">
+                email
+                <img src="img/blue-arrow-up.svg" alt="email icon" width="16" height="16">
+            </a>
+
+            <a class="link" href="{{ team.linkedin }}" target="_blank">
+                LinkedIn
+                <img src="img/blue-arrow-up.svg" alt="arrow-right" width="16" height="16">
+            </a>
+        </div>
+    </div>
+    {% endfor %}
+</section>
+
+    {% render 'partials/partner-ad.liquid' %}
+
+
+    {% render 'partials/footer.liquid' %}
+</main>

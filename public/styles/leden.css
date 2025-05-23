@@ -20,6 +20,9 @@
 
 .page-title-content{
     margin-top: var(--spacing-24);
+    max-width: 90ch;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .page-title{
@@ -271,6 +274,49 @@ summary{
 }
 
 
-/* var(--_size);
+/* Optel animatie */
+@property --_cv {
+    syntax: '<integer>';
+    inherits: false;
+    initial-value: 0;
+}
+  
+@keyframes counter {
+    from {
+      --_cv: 0;
+    }
+    to {
+      --_cv: var(--_value);
+    }
+}
+  
+.counter {
+    --_cv: 0;
+    --_value: 0; 
+  
+    counter-reset: count var(--_cv);
+    font-variant-numeric: tabular-nums; 
+    animation: counter 5s forwards;
+    animation-timing-function: ease-out;
+}
+  
+.counter::after {
+    content: counter(count);
+}
 
-counter-increment: my-counter; */
+
+/*   
+  @supports not (initial-value: 0) {
+    .counter {
+      counter-reset: count {{ leden | size }};
+    }
+  } */
+
+
+  
+
+
+      
+
+
+

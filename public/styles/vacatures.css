@@ -1,0 +1,95 @@
+.back-to-home-redirect {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    color: var(--black);
+}
+
+.vacancies-container {
+    border-top: var(--border);
+    @media (min-width: 890px) {
+        border: var(--border);
+    }
+    & .add-vacancie {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin: var(--spacing-32);
+        
+        & summary {
+            cursor: pointer;
+            font-family: var(--secondary-font);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        summary::before {
+            content: '+';
+            margin-right: 0.25em;
+            transition: transform 0.3s ease;
+            display: inline-block;
+            vertical-align: middle;
+            font-size: 24px;
+        }
+        & img {
+            padding-left: var(--spacing-8);
+        }
+    }
+    details[open] summary::before {
+        content: '+';  
+        transform: rotate(45deg);
+    }
+}
+
+.form-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--secondary-font);
+    padding: var(--spacing-48) var(--spacing-24);
+    border: var(--border);
+    background-color: white;
+    & .submit-form {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1em;
+        margin-top: var(--spacing-24);
+        background-color: white;
+        padding: var(--spacing-16);
+        border: var(--border);
+        font-family: var(--secondary-font);
+        appearance: none;
+        cursor: pointer;
+        & .loading {
+            opacity: .4;
+        }
+    }
+    & label {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: var(--spacing-8);
+    }
+    & input {
+        height: 30px;
+        width: 300px;
+        margin-bottom: 3vh;
+    }
+    & .close-btn {
+        padding: var(--spacing-12);
+        background-color: white;
+        border: var(--border);
+        margin-bottom: 2em;
+        font-family: var(--secondary-font);
+        cursor: pointer;
+    }
+}

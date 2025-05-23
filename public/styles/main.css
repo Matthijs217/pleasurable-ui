@@ -7,7 +7,7 @@ body {
     }
 }
 
-main {
+.main-home {
     @media (min-width: 481px) {
         border: var(--border);
     }
@@ -81,6 +81,37 @@ header{
         img{
             padding: 0.5em;
         }
+    }
+}
+
+.main-nav .nav-list li {
+  opacity: 0;
+  transform: translateY(20px); /* vanaf hoever beneden de li's komen voor de animatie  */
+  animation: fadeInUp 0.4s ease forwards; /* forwards laten staan -> zorgt ervoor dat ze blijven staan */
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.main-nav.open .nav-list li {
+    &:nth-child(1) {
+        animation-delay: 0.1s;
+    }
+    &:nth-child(2) {
+        animation-delay: 0.2s;
+    }
+    &:nth-child(3) {
+        animation-delay: 0.3s;
+    }
+    &:nth-child(4) {
+        animation-delay: 0.4s;
+    }
+    &:nth-child(5) {
+        animation-delay: 0.5s;
     }
 }
 
