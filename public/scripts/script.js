@@ -13,9 +13,11 @@ const closeMenu = document.getElementById('toggle-menu-close');
 
     closeMenu.addEventListener('click', function(event){
         event.preventDefault();
+        const menu = document.querySelector('#menu')
 
         const header = document.querySelector('.header');
         header.classList.toggle('nav-open')
+        menu.classList.remove('open');
     })
 
     
@@ -24,8 +26,9 @@ const details = document.querySelector("details");
 
     closeBtn.addEventListener('click', () => {
         details.removeAttribute('open')
-    });
-        const menu = document.querySelector('#menu');
+        
+    const menu = document.querySelector('#menu')
+
 
         header.classList.toggle('nav-open');
         menu.classList.remove('open');
