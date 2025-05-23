@@ -15,6 +15,12 @@ De instructie vind je in: [INSTRUCTIONS.md](https://github.com/fdnd-task/pleasur
 - Witruimtes
 - Nesting (maar niet teveel)
 
+## Pull requests
+
+Voor pull requests gebruiken we de template van fdnd-agency
+- https://github.com/fdnd-agency/.github/blob/main/pull_request_template.md?plain=1
+
+
 
 ## Inhoudsopgave
 
