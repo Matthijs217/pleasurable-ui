@@ -124,6 +124,345 @@
     }
 }
 
+/* details pagina events */
+.hero-section {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: var(--spacing-16);
+    padding: var(--spacing-40) var(--spacing-32);
+
+    @media (min-width: 250px) {
+        .hero-section-date-location {
+            display: none;
+        }
+    }
+
+    @media (min-width: 800px) {
+        .hero-section-date-location {
+            display: block;
+        }
+    }
+}
+
+.details-image-section {
+    @media (min-width: 800px) {
+        padding: var(--spacing-40) var(--spacing-32);
+    }
+}
+
+.detail-image-container {
+    max-width: 100%;
+    margin: 0 auto;
+    border: var(--border);
+}
+
+.details-section-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    max-height: 600px;
+    display: block;
+}
+
+/* content met form tabel en tekst */
+.detail-event-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: var(--spacing-24);
+
+    @media (min-width: 800px) {
+        padding: var(--spacing-40) var(--spacing-32);
+        gap: var(--spacing-32);
+    }
+
+    @media (min-width: 1000px) {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+        justify-content: start;
+    }
+}
+
+/* text */
+.details-text-content {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: var(--spacing-32);
+
+    @media (min-width: 1000px) {
+        grid-column: 2;
+        grid-row: 1;
+    }
+}
+
+/* table */
+.agenda {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    padding-bottom: var(--spacing-32);
+
+    @media (min-width: 1000px) {
+        grid-column: 2;
+        grid-row: 2;
+    }
+}
+
+.agenda-time-table {
+    border-collapse: collapse;
+    border: 1px solid black;
+}
+
+.agenda-time-table td {
+    border-bottom: 1px solid black;
+    padding: 10px;
+    text-align: left;
+}
+
+.agenda-time-table tr:last-child td {
+    border-bottom: none;
+}
+
+.agenda-time-table td:nth-child(2) {
+    text-align: right;
+}
+
+/* form */
+.sign-up-for-event-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    padding-bottom: var(--spacing-32);
+
+    @media (min-width: 1000px) {
+        grid-column: 2;
+        grid-row: 3;
+    }
+}
+
+.sign-up-form {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+
+    @media (min-width: 800px) {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2em;
+        grid-template-columns: 1fr 1fr;
+        grid-auto-rows: auto;
+        gap: 2em 3em;
+    }
+}
+
+.input-bar-container {
+    position: relative;
+
+    & input {
+        all: unset;
+        border: 0;
+        outline: none;
+        appearance: none;
+        border-bottom: var(--border);
+        padding-bottom: .25em;
+        width: 100%;
+    }
+}
+
+.form-label {
+    font-size: var(--size-sm);
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: .2s ease;
+    pointer-events: none;
+}
+
+/* als er een focus op de input is of als de placeholder niet meer zichtbaar is wordt op de .label de css uitgevoerd */
+.input-bar:focus+.form-label,
+.input-bar:not(:placeholder-shown)+.form-label {
+    transform: translateY(-25px);
+    transition: transform .2s ease;
+    color: var(--black);
+}
+
+/* all companies */
+.participating-companies-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+
+    @media (min-width: 1000px) {
+        grid-column: 2;
+        grid-row: 4;
+    }
+}
+
+.participating-companies-table {
+    border-collapse: collapse;
+    border: 1px solid black;
+}
+
+.participating-companies-table td {
+    border-bottom: 1px solid black;
+    padding: 10px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.participating-companies-table tr:last-child td {
+    border-bottom: none;
+}
+
+.participating-companies-table td:nth-child(2) {
+    text-align: center;
+}
+
+.detail-image-date-location {
+    display: none;
+
+    @media (min-width: 800px) {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        grid-column: 1;
+        grid-row: 1;
+    }
+}
+
+
+/* locatie sectie net boven footer */
+
+.location-information-container {
+    margin-top: 2em;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 0.7fr;
+    border-top: var(--border);
+
+    @media (min-width: 800px) {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr;
+    }
+}
+
+.event-location-image-container {
+    grid-column: 1;
+    grid-row: 1;
+
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.event-location-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+}
+
+.text-location {
+    grid-column: 1;
+    grid-row: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: var(--spacing-32);
+    padding-top: var(--spacing-24);
+
+    @media (min-width: 800px) {
+        grid-column: 2;
+        grid-row: 1;
+    }
+}
+
+.event-adress-information {
+    line-height: 1em;
+}
+
+/* succes bericht en loader */
+/* succes beriht */
+#succes {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    color: rgb(0, 0, 0);
+    background-color: lightgreen;
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 9999;
+    display: none;
+}
+
+.successtate {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    color: rgb(0, 0, 0);
+    background-color: lightgreen;
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 9999;
+    animation: successtate 5s forwards;
+}
+
+@keyframes successtate {
+    0% {
+        opacity: 1;
+    }
+
+    80% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+/* loading state */
+.loader {
+    background-color: rgb(255, 255, 255);
+    height: 2em;
+    width: 2em;
+    border-radius: 100%;
+    border: 3px solid rgb(202, 202, 202);
+    border-top: 3px solid rgb(3, 157, 0);
+    animation: rotate 2s linear infinite;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.loader {
+    display: none;
+}
+
+.visible {
+    display: block;
+}
+
+.sign-up-button-container {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+}
+
+.submitting {
+    opacity: 0.3;
+    transition: opacity 0.3s ease-in-out;
+=======
 /* scroll animatie */
 .test-class {
     animation: scrollding ease-in;
