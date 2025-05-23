@@ -46,9 +46,16 @@ header{
 }
 
 .nav-list{
-    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    gap: 2em;
+    margin-left: 2em;
+    padding: 2em 2em 2em 0;
     list-style: none;
     li a{
+        text-transform: uppercase;
         text-decoration: none;
         color: var(--black);
     }
@@ -56,6 +63,8 @@ header{
 }
 
 .nav-actions{
+    margin: 3em 0 0 2em;
+    text-transform: uppercase;
     display: flex;
     flex-direction: column;
     gap: 1em;
@@ -64,7 +73,7 @@ header{
 .main-nav{
     background-color: var(--white);
     height: 100%;
-    width: 75%;
+    width: 55%;
     position: fixed;
     top: 0;
     right: 0;
@@ -86,8 +95,8 @@ header{
 
 .main-nav .nav-list li {
   opacity: 0;
-  transform: translateY(20px); /* vanaf hoever beneden de li's komen voor de animatie  */
-  animation: fadeInUp 0.4s ease forwards; /* forwards laten staan -> zorgt ervoor dat ze blijven staan */
+  transform: translateY(15px); /* vanaf hoever beneden de li's komen voor de animatie  */
+  animation: fadeInUp 0.25s ease forwards; /* forwards laten staan -> zorgt ervoor dat ze blijven staan */
 }
 
 @keyframes fadeInUp {
