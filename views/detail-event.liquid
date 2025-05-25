@@ -1,7 +1,7 @@
 {% render 'partials/head.liquid' %}
 <script src="scripts/script.js" defer></script>
 
-<main>
+<main class="main-home">
 {% render 'partials/header.liquid' %}
 
 <section class="hero-section">
@@ -124,6 +124,7 @@
             <div class="sign-up-button-container">
                 {% render 'partials/button.liquid', submit: "Schrijf me in" %}
             </div>
+            <span class="loader"></span>
     </form>
     </article>
 {% endif %}
@@ -282,6 +283,7 @@
 </div>
 
 
+</main>
 
 
 
