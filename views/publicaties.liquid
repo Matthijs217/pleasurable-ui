@@ -15,6 +15,7 @@
   {% for publicatie in publications %}
   {% assign event-link = "event/detail-event/" | append: publicatie.id %}
     {% render 'partials/foto-card.liquid',
+      heading-level: "h3"
       img-src: publicatie.photo.id,
       img-width: publicatie.photo.width,
       img-height: publicatie.photo.height,
