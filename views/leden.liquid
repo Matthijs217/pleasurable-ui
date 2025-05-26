@@ -1,9 +1,9 @@
-{% render 'partials/head.liquid' %}
-<script src="scripts/script.js" defer></script>
 {% assign pageTitle = "Onze leden - Dutch Digital Agencies" %}
+{% render 'partials/head.liquid', pageTitle: pageTitle %}
+<script src="scripts/script.js" defer></script>
 
-<main>
-    {% render 'partials/header.liquid', pageTitle: pageTitle %}
+<main class="main-home">
+    {% render 'partials/header.liquid' %}
 
     <section class="page-title-container">
         <section class="page-title">

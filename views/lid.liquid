@@ -1,8 +1,10 @@
-{% render 'partials/head.liquid' %}
 {% assign pageTitle = lidDetails.title | append: " - Dutch Digital Agencies" %}
-{% render 'partials/header.liquid', pageTitle: pageTitle %}
+{% render 'partials/head.liquid', pageTitle: pageTitle %}
 
-<main class="lid-details-main">
+<main class="lid-details-main main-home">
+
+    {% render 'partials/header.liquid' %}
+
     <section class="page-title">
         <a href="/leden">
         <img src="/img/arrow-left-black.svg" alt="" width="16" height="16">terug naar home
@@ -31,14 +33,14 @@
 
     <section class="contact">
         <h2>contact</h2>
-        <p class="text">{{ lidDetails.title }}</p>
+        <p>{{ lidDetails.title }}</p>
         {% assign addressDetails = lidDetails.address | split: " "  %}
         {% comment %} TODO: get first two of array, get everything after the first 2 {% endcomment %}
-        <p class="text">{{addressDetails[0] }} {{addressDetails[1] }}<br>
+        <p>{{addressDetails[0] }} {{addressDetails[1] }}<br>
         {{ addressDetails[2] }} {{ addressDetails[3] }} {{ addressDetails[4] }} {{ addressDetails[5] }}
         </p>
-        <p class="text"><a href="{{ lidDetails.phone }}">{{ lidDetails.phone }}</p></a>
-        <p class="text"><a href="mailto:{{ lidDetails.email }}">{{ lidDetails.email }}</p></a>
+        <a href="{{ lidDetails.phone }}">{{ lidDetails.phone }}</p></a>
+        <a href="mailto:{{ lidDetails.email }}">{{ lidDetails.email }}</p></a>
     </section>
 </main>
 {% render 'partials/footer.liquid' %}
