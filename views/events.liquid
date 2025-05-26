@@ -8,7 +8,7 @@
 <section class="hero hero-border">
     {% render 'partials/backtohome-redirect.liquid' %}
 
-        <h1 class="hero-title">events</h1>
+        <h2 class="hero-title xxxl">events</h2>
         <p class="hero-text">Spraakmakende sprekers. Inspirerende kennissessies. Events waar je écht bij wilt zijn. En waar je al je vakgenoten weer spreekt. Versterk je bureau met kennis en inspiratie over bureaumanagement, leiderschap en de laatste ontwikkelingen.</p>
 </section>
 
@@ -16,6 +16,8 @@
   {% for eventcard in eventCards %}
   {% assign event-link = "event/detail-event/" | append: eventcard.id %}
     {% render 'partials/foto-card.liquid',
+      heading-level: "h3",
+      class: 'xl',
       img-src: eventcard.photo.id,
       img-width: eventcard.photo.width,
       img-height: eventcard.photo.height,
@@ -25,7 +27,7 @@
       card-location: eventcard.location,
       image-alt: eventcard.title,
       card-href-link: "events/detail-event/" | append: eventcard.id
-      card-href-link: event-link
+      card-href-link: event-link,
     %}
   {% endfor %}
 </div>
@@ -71,6 +73,8 @@
 <div class="event-items-container">
   {% for event in events %}
   {% assign event-link = "event/detail-event/" | append: event.id %}
+    {% render 'partials/event-list.liquid', class: "test-class",
+      heading-level: "h4",
     {% render 'partials/event-list.liquid',
       card-label: event.title,
       card-title: event.title,
