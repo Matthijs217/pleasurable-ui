@@ -1,0 +1,38 @@
+form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 3em;
+        @media (min-width: 430px) { 
+            flex-direction: row;
+        }
+        @media (min-width: 800px) { 
+            margin-left: auto;
+        }
+        & .input-container {
+            position: relative;
+        }
+        & label {
+            font-size: var(--size-sm);
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: .2s ease;
+            pointer-events: none;
+        }
+        & input {
+            all: unset;
+            border: 0;
+            outline: none;
+            appearance: none;
+            border-bottom: var(--border);
+            padding-bottom: .25em;
+        }
+        & input:focus + label,
+        input:not(:placeholder-shown) + label {
+            transform: translateY(-25px);
+            transition: transform .2s ease;
+            color: var(--black);
+        }
+    }

@@ -146,6 +146,7 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    padding: var(--spacing-8);
 }
 
 /* lid toevoegen */

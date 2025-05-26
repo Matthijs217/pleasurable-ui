@@ -30,13 +30,16 @@
 
 <form class="filter-system-container" method="get" action="/publicaties">
   <div class="search-bar-container">
-    {% render 'partials/input-type.liquid' %}
-    <button class="select-filter-submit-button" id="filter-submit-button" type="submit">Verzenden</button>
+  <div class="input-container">
+      <input placeholder="" id="input" type="text">
+      <label for="input">Zoek een publicatie</label> 
+  </div>    
+  <button class="select-filter-submit-button" id="filter-submit-button" type="submit">Zoek</button>
   </div>
 
   <div class="filter-btn">
     {% render 'partials/filter-button.liquid',
-        select-btn-1-label: "SORTEER OP DATUM",
+        select-btn-1-label: "DATUM",
         select-btn-1-name: "sort",
         select-btn-1-id: "filter-sort",
         btn-1-value-1: "DATUM",
@@ -44,7 +47,7 @@
         btn-1-value-2: "NIEUW-OUD",
         btn-1-label-2: "NIEUW-OUD",
         btn-1-value-3: "OUD-NIEUW",
-        btn-1-label-3: "OUD-NIEUW",
+        btn-1-label-3: "OUD-NIEUW"
     %}
 
     {% render 'partials/filter-button.liquid',
