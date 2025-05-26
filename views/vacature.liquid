@@ -1,0 +1,104 @@
+{% render 'partials/head.liquid' %}
+
+<main class="main-home">
+
+    {% render 'partials/header.liquid' %}
+
+<section class="vacancie-container">
+    <div>
+        {% render 'partials/link-href.liquid', link:"/vacatures", linktext:"TERUG NAAR VACATURES" %}
+        <h2>{{ vacatures.title }}</h2>
+        <p>{{ vacatures.locatie }}</p>
+    </div>
+    {% comment %} Door een height en width mee te geven aan de foto zorg je ervoor dat de browser van tevoren weet welke
+    size die moet inladen.
+    Hierdoor voorkom je een layout shift als de foto later inlaad. {% endcomment %}
+    <picture>
+        {% comment %} mobiel onder 480px {% endcomment %}
+        <source type="image/avif"
+            srcset="https://fdnd-agency.directus.app/assets/{{ vacatures.photo }}?height=240&width=320&format=avif">
+        <source type="image/webp"
+            srcset="https://fdnd-agency.directus.app/assets/{{ vacatures.photo }}?height=240&width=320&format=webp">
+
+        <source media="(min-width: 480px)" type="image/avif"
+            srcset="https://fdnd-agency.directus.app/assets/{{ vacatures.photo }}?height=360&width=480&format=avif">
+        <source media="(min-width: 480px)" type="image/webp"
+            srcset="https://fdnd-agency.directus.app/assets/{{ vacatures.photo }}?height=360&width=480&format=webp">
+
+        <source media="(min-width: 768px)" type="image/avif"
+            srcset="https://fdnd-agency.directus.app/assets/{{ vacatures.photo }}?height=450&width=600&format=avif">
+        <source media="(min-width: 768px)" type="image/webp"
+            srcset="https://fdnd-agency.directus.app/assets/{{ vacatures.photo }}?height=450&width=600&format=webp">
+
+        <source media="(min-width: 1024px)" type="image/avif"
+            srcset="https://fdnd-agency.directus.app/assets/{{ vacatures.photo }}?height=600&width=800&format=avif">
+        <source media="(min-width: 1024px)" type="image/webp"
+            srcset="https://fdnd-agency.directus.app/assets/{{ vacatures.photo }}?height=600&width=800&format=webp">
+
+        <!-- Backup foto -->
+        <img class="sfeerphoto" src="https://fdnd-agency.directus.app/assets/{{ vacatures.photo }}?height=360&width=480"
+            width="480" height="360" alt="sfeerfoto">
+    </picture>
+    <p>{{ vacatures.description | downcase }}</p>
+</section>
+
+    <aside class="vacancie-info">
+        <h2>vacature gegevens</h2>
+
+        <dl>
+            {% if vacatures.salary %}
+            <div>
+                <dt>Salaris:</dt>
+                <dd>€{{ vacatures.salary }} per maand</dd>
+            </div>
+            {% else %}
+            <div>
+                <dt>Salaris:</dt>
+                <dd>€3500 per maand</dd>
+            </div>
+            {% endif %}
+
+            {% if vacatures.employment %}
+            <div>
+                <dt>Dienstverband: </dt>
+                <dd>{{ vacatures.employment }}</dd>
+            </div>
+            {% else %}
+            <div>
+                <dt>Dienstverband: </dt>
+                <dd>Fulltime</dd>
+            </div>
+            {% endif %}
+
+            {% if vacatures.locatie %}
+            <div>
+                <dt>Locatie:</dt>
+                <dd>{{ vacatures.locatie }}</dd>
+            </div>
+            {% else %}
+            <div>
+                <dt>Locatie:</dt>
+                <dd>Niet bekend</dd>
+            </div>
+            {% endif %}
+
+            {% if vacatures.date_posted %}
+            <div>
+                <dt>Datum geplaatst: </dt>
+                <dd>{{ vacatures.date_posted | date: "%B %d, %Y" }}</dd>
+            </div>
+            {% else %}
+            <div>
+                <dt>Datum geplaatst: </dt>
+                <dd>Niet bekend</dd>
+            </div>
+            {% endif %}
+
+
+            <a class="btn" href="vacature/{{ vacature.id }}">Sollicitatie bekijken <img
+                    src="/img/blue-arrow-up.svg"></a>
+            <dl>
+    </aside>
+
+{% render 'partials/footer.liquid' %}
+</main>
