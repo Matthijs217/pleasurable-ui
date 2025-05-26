@@ -1,0 +1,92 @@
+.vacancie-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    & div {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: var(--spacing-32) var(--spacing-12);
+        & a {
+            display: flex;
+            align-items: center;
+            font-size: .75rem;
+            margin-bottom: .5rem;
+            color: var(--black);
+        }
+        & p {
+            font-family: var(--secondary-font);
+            font-size: .895rem;
+        }
+    }
+    & h1 {
+        text-align: center;
+        font-size: 1.85rem;
+        width: 100%;
+    }
+    & .sfeerphoto {
+        border-top: var(--border);
+        width: 80vw;
+        height: 400px;
+        object-fit: cover;
+        padding: var(--spacing-16);
+    }
+    & p {
+        width: 90%;
+        text-align: center;
+        &::first-letter {
+            text-transform: uppercase;
+        }
+
+    }
+    & ul {
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: var(--spacing-16);
+        padding: var(--spacing-16);
+        list-style-type: disc;
+    }
+    & h2 {
+        margin: var(--spacing-24);
+    }
+}
+
+aside {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+    padding: var(--spacing-32) var(--spacing-16);
+    border-top: var(--border);
+    & dl {
+        display: flex;
+        flex-direction: column;
+        font-size: 1.25em;
+        gap: 1.25em;
+        & dt {
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+        & dd {
+            margin-left: var(--spacing-72);
+        }
+        & div {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+    & a {
+        place-self: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: .25em;
+        font-weight: 700;
+    }
+}

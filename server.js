@@ -240,6 +240,16 @@ app.get('/vacatures', async function (request, response) {
   response.render('vacatures.liquid', { vacatures: vacaturesResponseJSON.data });
 })
 
+app.get('/vacature/:id', async function (request, response) {
+ 
+ const vacature = request.params.id
+ const vacaturesResponse = await fetch(`https://fdnd-agency.directus.app/items/dda_agencies_vacancies/?filter={"id":"${vacature}"}`)
+ const vacaturesResponseJSON = await vacaturesResponse.json()
+ 
+ // Geef hier eventueel data aan mee
+ response.render('vacature.liquid', { vacatures: vacaturesResponseJSON.data[0]});
+})
+
 // Stel het poortnummer in waar Express op moet gaan luisteren
 // Lokaal is dit poort 8000; als deze applicatie ergens gehost wordt, waarschijnlijk poort 80
 app.set('port', process.env.PORT || 8000)
