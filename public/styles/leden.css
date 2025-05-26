@@ -146,6 +146,7 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    padding: var(--spacing-8);
 }
 
 /* lid toevoegen */
@@ -296,7 +297,7 @@ summary{
   
     counter-reset: count var(--_cv);
     font-variant-numeric: tabular-nums; 
-    animation: counter 5s forwards;
+    animation: counter 2.5s forwards;
     animation-timing-function: ease-out;
 }
   

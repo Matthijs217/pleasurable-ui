@@ -1,8 +1,9 @@
-{% render 'partials/head.liquid' %}
+{% assign pageTitle = "Vacatures - Dutch Digital Agencies" %}
+{% render 'partials/head.liquid', pageTitle: pageTitle %}
 <script src="scripts/script.js" defer></script>
 
+<main class="main-home">
 {% render 'partials/header.liquid' %}
-
 
 <section class="hero">
     {% render 'partials/backtohome-redirect.liquid' %}
@@ -12,7 +13,7 @@
 </section>
 
 
-<main class="vacancies-container">
+<section class="vacancies-container">
     {% render 'partials/list-table.liquid', vacatures: vacatures %}
 
     <details class="add-vacancie">
@@ -47,8 +48,8 @@
         <h6>Succes!</h6>
         <p class="succes-message">Vacature toegevoegd!</p>
     </div>
+</section>
 </main>
-
 <script type="module">
 
   // Als er ergens op de pagina een formulier wordt gesubmit..

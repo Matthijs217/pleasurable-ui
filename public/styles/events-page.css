@@ -37,6 +37,8 @@
 .search-bar-container {
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    align-items: center;
     gap: var(--spacing-8);
 }
 
@@ -464,42 +466,24 @@
     transition: opacity 0.3s ease-in-out;
 }
 /* scroll animatie */
-.test-class {
-    animation: scrollding ease-in;
+.scroll-animation {
+    animation: scrollfade ease-in;
 
     /* Dit is de naam van het element waarmee je aangeeft hoelang de scrool duurt. 
     je geeft de classname van dat element waardoor nu duidelijk is hoelang dit element is  */
-    view-timeline-name: --test-class;
+    view-timeline-name: --scroll-animation;
     /* welke richting de scroll naartoe gaat dit geval horizontaal  */
     view-timeline-axis: block;
 
     /* dit is de het element waarin je de scroll animatie wilt uitvoeren. dit is de class name van het element */
-    animation-timeline: --test-class;
+    animation-timeline: --scroll-animation;
 
     /* wanneer de animatie begint bij hoeveel procent het in het element is en hoeveel procent het covert */
     animation-range: entry 3% cover 30%;
 }
 
 
-@keyframes scrollding {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
-}
-
-.animation-past-event {
-    animation: ui-scroll ease-in;
-    view-timeline-name: --animation-past-event;
-    view-timeline-axis: block;
-    animation-timeline: --animation-past-event;
-    animation-range: entry 3% cover 30%;
-}
-
-@keyframes ui-scroll {
+@keyframes scrollfade {
     from {
         opacity: 0;
     }
