@@ -75,13 +75,11 @@
   {% assign event-link = "event/detail-event/" | append: event.id %}
     {% render 'partials/event-list.liquid', class: "test-class",
       heading-level: "h4",
-    {% render 'partials/event-list.liquid',
       card-label: event.title,
       card-title: event.title,
       card-date: event.date,
       card-location: event.location,
-      card-href-link: "events/detail-event/" | append: event.id
-      card-href-link: event-link
+      card-href-link: event-link,
     %}
   {% endfor %}
 </div>
