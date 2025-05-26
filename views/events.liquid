@@ -71,7 +71,7 @@
 <div class="event-items-container">
   {% for event in events %}
   {% assign event-link = "event/detail-event/" | append: event.id %}
-    {% render 'partials/event-list.liquid', class: "test-class",
+    {% render 'partials/event-list.liquid',
       card-label: event.title,
       card-title: event.title,
       card-date: event.date,
@@ -90,7 +90,7 @@
 <section class="past-events-container">
   <h4 class="past-events-title">PLAATSGEVONDEN EVENTS:</h4>
 
-  <article class="past-event-item animation-past-event">
+  <article class="past-event-item scroll-animation">
     {% render 'partials/category-label.liquid', text: "DDA" %} 
     <h4 class="past-event-title">Ledenbijeenkomst</h4>
 
@@ -105,7 +105,7 @@
     </div>
   </article>
 
-  <article class="past-event-item animation-past-event">
+  <article class="past-event-item scroll-animation">
     {% render 'partials/category-label.liquid', text: "TECH" %} 
     <h4 class="past-event-title">Maak je eigen game</h4>
 
@@ -120,7 +120,7 @@
     </div>
   </article>
 
-  <article class="past-event-item animation-past-event">
+  <article class="past-event-item scroll-animation">
     {% render 'partials/category-label.liquid', text: "MEETUP" %} 
     <h4 class="past-event-title">Creative design week</h4>
 
