@@ -6,7 +6,7 @@
 
 <section class="hero">
     {% render 'partials/backtohome-redirect.liquid' %}
-    <h1>PUBLICATIES</h1>
+    <h2 class="xxxl">PUBLICATIES</h2>
     <p>Om er voor te zorgen dat ook jij op de hoogte blijft van het laatste nieuws en interessante opinies met betrekking tot onze branche en digitale innovaties, delen we hier alle content die we of zelf hebben gecreëerd, bijvoorbeeld met input van onze leden, of verkregen hebben via één van onze partners.</p>
 </section>
 
@@ -67,6 +67,7 @@
   {% for publicatie in posts %}
   {% assign publicatie-link = "publicatie/detail-publicatie/" | append: publicatie.id %}
     {% render 'partials/event-list.liquid', class: "test-class",
+      header-level: "h3"
       card-label: publicatie.topic,
       card-title: publicatie.title,
       card-date: publicatie.date,
