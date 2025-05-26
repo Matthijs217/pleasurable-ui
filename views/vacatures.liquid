@@ -12,13 +12,12 @@
         researcher, als scrum master of marketeer, als strateeg. Start of groei door – en laat zien wat je kan.</p>
 </section>
 
-
 <section class="vacancies-container">
     {% render 'partials/list-table.liquid', vacatures: vacatures %}
 
     <details class="add-vacancie">
         <summary>Vacature toevoegen</summary>
-        <form class="form-container" action="/" method="post" data-enhanced="form">
+        <form class="form-container" action="/vacatures" method="post" data-enhanced="form">
             <button class="close-btn" type="button">close</button>
 
             <label for="titel">titel
@@ -50,6 +49,7 @@
     </div>
 </section>
 </main>
+
 <script type="module">
 
   // Als er ergens op de pagina een formulier wordt gesubmit..

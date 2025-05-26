@@ -47,13 +47,6 @@ app.get('/', async function (request, response) {
 })
 
 
-
-
-
-
-
-
-
 app.get('/events', async function (request, response) {
   
   const apiResponseEventCards = await fetch('https://fdnd-agency.directus.app/items/dda_events?filter[id][_in]=5,3,6&fields=*,photo.id,photo.width,photo.height');
@@ -144,20 +137,6 @@ app.post('/events/detail-event/:id', async function (request, response) {
 
   response.redirect(303, '/events/detail-event/' + request.params.id + '?success=true');
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // leden pagina post/get
 app.get('/leden', async function (request, response) {
@@ -268,6 +247,23 @@ app.get('/vacatures', async function (request, response) {
   vacaturesResponseJSON = await vacaturesResponse.json()
 
   response.render('vacatures.liquid', { vacatures: vacaturesResponseJSON.data });
+})
+
+app.post('/vacatures', async function (request, response) {
+console.log("Ontvangen body:", request.body)
+    await fetch('https://fdnd-agency.directus.app/items/dda_agencies_vacancies', {
+      method: 'POST',
+      body: JSON.stringify({
+        title: request.body.title,
+        agency_id: request.body.agency_id,
+        hours: request.body.hours,
+        locatie: request.body.location
+      }),
+      headers: {
+        'Content-Type': 'application/json;charset=UTF-8'
+      }
+    });
+    response.redirect(303, '/?succes=Vacature is toegevoegd!');
 })
 
 app.get('/vacature/:id', async function (request, response) {
