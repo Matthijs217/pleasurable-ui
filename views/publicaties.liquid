@@ -1,0 +1,80 @@
+{% render 'partials/head.liquid' %}
+
+<main class="main-home">
+{% render 'partials/header.liquid' %}
+
+<section class="hero">
+    {% render 'partials/backtohome-redirect.liquid' %}
+    <h1>PUBLICATIES</h1>
+    <p>Om er voor te zorgen dat ook jij op de hoogte blijft van het laatste nieuws en interessante opinies met betrekking tot onze branche en digitale innovaties, delen we hier alle content die we of zelf hebben gecreëerd, bijvoorbeeld met input van onze leden, of verkregen hebben via één van onze partners.</p>
+</section>
+
+<div class="cards-container">
+  {% for publicatie in publications %}
+  {% assign event-link = "event/detail-event/" | append: publicatie.id %}
+    {% render 'partials/foto-card.liquid',
+      img-src: publicatie.photo.id,
+      img-width: publicatie.photo.width,
+      img-height: publicatie.photo.height,
+      card-label: publicatie.title,
+      card-title: publicatie.title,
+      card-date: publicatie.date,
+      card-location: publicatie.location,
+      image-alt: publicatie.title,
+      card-href-link: "events/detail-event/" | append: publicatie.id
+      card-href-link: event-link
+    %}
+  {% endfor %}
+</div>
+
+<form class="filter-system-container" method="get" action="/publicaties">
+  <div class="search-bar-container">
+    {% render 'partials/input-type.liquid' %}
+    <button class="select-filter-submit-button" id="filter-submit-button" type="submit">Verzenden</button>
+  </div>
+
+  <div class="filter-btn">
+    {% render 'partials/filter-button.liquid',
+        select-btn-1-label: "SORTEER OP DATUM",
+        select-btn-1-name: "sort",
+        select-btn-1-id: "filter-sort",
+        btn-1-value-1: "DATUM",
+        btn-1-label-1: "DATUM",
+        btn-1-value-2: "NIEUW-OUD",
+        btn-1-label-2: "NIEUW-OUD",
+        btn-1-value-3: "OUD-NIEUW",
+        btn-1-label-3: "OUD-NIEUW",
+    %}
+
+    {% render 'partials/filter-button.liquid',
+      select-btn-1-label: "ONDERWERP",
+      select-btn-1-name: "topic",
+      select-btn-1-id: "filter-topic",
+      btn-1-value-1: "ONDERWERP",
+      btn-1-value-2: "Carrière",
+      btn-1-value-3: "Webinair",
+      btn-1-value-4: "Creatief",
+      btn-1-value-5: "Sport"
+    %}
+  </div>
+</form>
+
+<div class="event-items-container">
+  {% for publicatie in posts %}
+  {% assign publicatie-link = "publicatie/detail-publicatie/" | append: publicatie.id %}
+    {% render 'partials/event-list.liquid', class: "test-class",
+      card-label: publicatie.topic,
+      card-title: publicatie.title,
+      card-date: publicatie.date,
+      card-location: publicatie.location,
+      card-href-link: "events/detail-publicatie/" | append: publicatie.id
+      card-href-link: publicatie-link
+    %}
+  {% endfor %}
+</div>
+
+{% render 'partials/partner-ad.liquid' %}
+
+{% render 'partials/footer.liquid' %}
+
+</main>

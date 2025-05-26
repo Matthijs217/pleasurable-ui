@@ -228,7 +228,37 @@ app.get('/overons', async function (request, response) {
 })
 
 app.get('/publicaties', async function (request, response) {
-  response.render('publicaties.liquid')
+  const apiResponsePublications = await fetch('https://fdnd-agency.directus.app/items/dda_publications?filter[id][_in]=5,3,6&fields=*,photo.id,photo.width,photo.height');
+  const apiResponsePublicationsJSON = await apiResponsePublications.json();
+
+  const { date, topic } = request.query;
+  let apiResponse;
+
+  console.log("test", request.query);
+
+  let directusApi = 'https://fdnd-agency.directus.app/items/dda_publications';
+
+  // Kijkt of location of theme een waarde hebben. Is dat het geval wordt in de directusapi value de ? toegevoegd. Hiermee kunnen filters toepassen
+  if (date || topic) {
+    directusApi += '?';
+
+    // Hier kijkt er of theme een waarde heeft en pakt hij de directus filter syntax en zet de waarde van de theme daarin.
+    if (date) {
+      directusApi += 'filter[date][_eq]=' + request.query.date;
+    }
+
+    // Hier kijkt er of de location een waarde heeft en of ook is gefiltert op theme. zo ja, dan wordt de & toegevoegt zodat er nog een filter in de url kan worden toegevoegd
+    if (topic) {
+      if (date) directusApi += '&';
+      directusApi += 'filter[topic][_eq]=' + request.query.topic;
+    }
+  }
+
+  console.log(directusApi)
+  apiResponse = await fetch(directusApi);
+  const apiResponseJSON = await apiResponse.json();
+
+  response.render('publicaties.liquid', { publications: apiResponsePublicationsJSON.data, posts: apiResponseJSON.data });
 })
 
 app.get('/vacatures', async function (request, response) {
