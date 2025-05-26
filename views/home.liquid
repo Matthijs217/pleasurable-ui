@@ -26,8 +26,9 @@
 
 <div class="event-main-container">
     {% for eventsListCard in eventsListCards %}
-    {% assign event-link = "event/detail-event/" | append: eventsListCard.id %}
+    {% assign event-link = "events/detail-event/" | append: eventsListCard.id %}
     {% render 'partials/foto-card.liquid',
+        heading-level: "h3",
         img-src: eventsListCard.photo.id,
         img-width: eventsListCard.photo.width,
         img-height: eventsListCard.photo.height,
@@ -42,7 +43,7 @@
 
     <div class="events-container">
         {% for eventsList in eventsLists %}
-        {% assign event-link = "event/detail-event/" | append: eventsList.id %}
+        {% assign event-link = "events/detail-event/" | append: eventsList.id %}
         {% render 'partials/event-list.liquid',
             card-label: eventsList.title,       
             card-title: eventsList.title,
@@ -60,8 +61,9 @@
 
 <div class="container">
     {% for event in events %}
-    {% assign event-link = "event/detail-event/" | append: event.id %}
+    {% assign event-link = "events/detail-event/" | append: event.id %}
     {% render 'partials/foto-card.liquid',
+        heading-level: "h3"
         img-src: event.photo.id,
         img-width: event.photo.width,
         img-height: event.photo.height,
@@ -70,7 +72,7 @@
         card-date: event.date,
         card-location: event.location,
         image-alt: event.title,
-        card-href-link: event-link
+        card-href-link: event-link,
     %}
     {% endfor %}
 </div>
