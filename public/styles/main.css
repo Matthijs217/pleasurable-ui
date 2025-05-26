@@ -115,6 +115,7 @@ header{
 }
 
 .main-nav.open .nav-list li {
+    animation-delay: calc(sibling-index() * 0.1s);
     &:nth-child(1) {
         animation-delay: 0.1s;
     }
