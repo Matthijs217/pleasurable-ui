@@ -8,9 +8,6 @@
 
 .vacancies-container {
     border-top: var(--border);
-    @media (min-width: 890px) {
-        border: var(--border);
-    }
     & .add-vacancie {
         display: flex;
         justify-content: center;
