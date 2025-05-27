@@ -290,6 +290,39 @@
     color: var(--black);
 }
 
+.input-container {
+    position: relative;
+
+    & input {
+        all: unset;
+        border: 0;
+        outline: none;
+        appearance: none;
+        border-bottom: var(--border);
+        padding-bottom: .25em;
+        width: 100%;
+    }
+
+    & label {
+        font-size: var(--size-sm);
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: .2s ease;
+        pointer-events: none;
+    }
+
+    &
+
+    /* als er een focus op de input is of als de placeholder niet meer zichtbaar is wordt op de .label de css uitgevoerd */
+    input:focus+ label,
+    input:not(:placeholder-shown)+ label {
+        transform: translateY(-25px);
+        transition: transform .2s ease;
+        color: var(--black);
+    }
+}
+
 /* all companies */
 .participating-companies-container {
     display: flex;

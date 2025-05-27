@@ -37,7 +37,7 @@
 <form class="filter-system-container" method="get" action="/events">
 
     <div class="search-bar-container">
-        {% render 'partials/input-type.liquid' %}
+        {% render 'partials/input-type.liquid', message: "Zoeken" %}
 
         <button class="select-filter-submit-button" id="filter-submit-button" type="submit">Verzenden</button>
     </div>
@@ -77,7 +77,7 @@
   {% assign event-link = "event/detail-event/" | append: event.id %}
   {% assign split-title = event.title | split: ' ' %}
   {% assign two-words = split-title | slice: 0, 2 | join: ' ' %}
-    {% render 'partials/event-list.liquid', class: "test-class",
+    {% render 'partials/event-list.liquid',
       heading-level: "h4",
       card-label: two-words,
       card-title: event.title,
