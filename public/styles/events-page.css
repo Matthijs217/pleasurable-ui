@@ -315,8 +315,8 @@
     &
 
     /* als er een focus op de input is of als de placeholder niet meer zichtbaar is wordt op de .label de css uitgevoerd */
-    input:focus+ label,
-    input:not(:placeholder-shown)+ label {
+    input:focus+label,
+    input:not(:placeholder-shown)+label {
         transform: translateY(-25px);
         transition: transform .2s ease;
         color: var(--black);
@@ -498,6 +498,7 @@
     opacity: 0.3;
     transition: opacity 0.3s ease-in-out;
 }
+
 /* scroll animatie */
 .scroll-animation {
     animation: scrollfade ease-in;

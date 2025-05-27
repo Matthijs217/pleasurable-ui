@@ -30,6 +30,38 @@
     border-bottom: var(--border)
 }
 
+@media (min-width: 550px) {
+    .card-container-child:nth-child(1) {
+        border-right: var(--border);
+    }
+
+    @media (min-width: 550px) {
+        .card-container-child:nth-child(3) {
+            border-right: var(--border);
+        }
+    }
+
+    @media (min-width: 1200px) {
+        .card-container-child:nth-child(3) {
+            border-right: none;
+        }
+    }
+
+    @media (min-width: 550px) {
+        .card-container-child:nth-child(1),
+        .card-container-child:nth-child(2) {
+            border-bottom: var(--border);
+        }
+    }
+
+     @media (min-width: 1200px) {
+        .card-container-child:nth-child(1),
+        .card-container-child:nth-child(2) {
+            border-bottom: none;
+        }
+    }
+}
+
 @media (min-width: 800px) {
     .card-container-child {
         border-bottom: none;
