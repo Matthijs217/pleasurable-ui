@@ -70,15 +70,15 @@ Voor pull requests gebruiken we de template van fdnd-agency
 ### Mockups van de paginas
 | Home                                                     |Over ons                                           |
 | -------------------------------------------------------- | -------------------------------------------------- |
-| <img src="./public/img/home-mockup.gif" width="300"> | <img src="./public/img/overons-mockup.gif" width="300"> |
+| <img src="./public/img/home-mockup.gif" width="400"> | <img src="./public/img/overons-mockup.gif" width="400"> |
 
 | Publicaties                                            | Leden                                         |
 | -------------------------------------------------- | ----------------------------------------------------- |
-| <img src="./public/img/publicaties-mockup.gif" width="300"> | <img src="./public/img/leden-mockup.gif" width="300"> |
+| <img src="./public/img/publicaties-mockup.gif" width="400"> | <img src="./public/img/leden-mockup.gif" width="400"> |
 
 | Events                                            | Vacatures                                         |
 | -------------------------------------------------- | ----------------------------------------------------- |
-| <img src="./public/img/events-mockup.gif" width="300"> | <img src="./public/img/vacatures-mockup.gif" width="300"> |
+| <img src="./public/img/events-mockup.gif" width="400"> | <img src="./public/img/vacatures-mockup.gif" width="400"> |
 
 
 
