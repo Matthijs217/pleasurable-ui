@@ -4,7 +4,7 @@
 }
 
 .basic-button {
-    padding: 1em 4em 1em 1em;
+    padding: 1em 4.5em 1em 1em;
     background-color: var(--white);
     border: var(--border);
     color: var(--black);
