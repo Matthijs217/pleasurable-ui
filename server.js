@@ -207,7 +207,7 @@ app.get('/overons', async function (request, response) {
 })
 
 app.get('/publicaties', async function (request, response) {
-  const apiResponsePublications = await fetch('https://fdnd-agency.directus.app/items/dda_publications?filter[id][_in]=5,3,6&fields=*,photo.id,photo.width,photo.height');
+  const apiResponsePublications = await fetch('https://fdnd-agency.directus.app/items/dda_publications?filter[id][_in]=1,6,2&fields=*,photo.id,photo.width,photo.height');
   const apiResponsePublicationsJSON = await apiResponsePublications.json();
 
   const { date, topic } = request.query;

@@ -1,38 +1,157 @@
 form {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 3em;
-        @media (min-width: 430px) { 
-            flex-direction: row;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3em;
+
+    @media (min-width: 430px) {
+        flex-direction: row;
+    }
+
+    @media (min-width: 800px) {
+        margin-left: auto;
+    }
+
+    & .input-container {
+        position: relative;
+    }
+
+    & label {
+        font-size: var(--size-sm);
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: .2s ease;
+        pointer-events: none;
+    }
+
+    & input {
+        all: unset;
+        border: 0;
+        outline: none;
+        appearance: none;
+        border-bottom: var(--border);
+        padding-bottom: .25em;
+    }
+
+    & input:focus+label,
+    input:not(:placeholder-shown)+label {
+        transform: translateY(-25px);
+        transition: transform .2s ease;
+        color: var(--black);
+    }
+}
+
+/* cards */
+.publication-card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-rows: auto;
+    gap: var(--spacing-12);
+    border-top: 1px solid black;
+
+    @media (min-width: 510px) {
+        gap: 0;
+    }
+
+    @media (min-width: 1300px) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.publication-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: var(--spacing-16);
+    padding: var(--spacing-40);
+    border-bottom: var(--border);
+
+    &:last-child {
+        border-bottom: none;
+    }
+
+    @media (min-width: 510px) {
+        border-bottom: none;
+    }
+}
+
+@media (min-width: 510px) {
+    .publication-card:nth-child(1),
+    .publication-card:nth-child(2),
+    .publication-card:nth-child(3) {
+        border-bottom: var(--border);
+
+        &.publication-card:nth-child(1) {
+            border-right: var(--border);
         }
-        @media (min-width: 800px) { 
-            margin-left: auto;
-        }
-        & .input-container {
-            position: relative;
-        }
-        & label {
-            font-size: var(--size-sm);
-            position: absolute;
-            top: 0;
-            left: 0;
-            transition: .2s ease;
-            pointer-events: none;
-        }
-        & input {
-            all: unset;
-            border: 0;
-            outline: none;
-            appearance: none;
-            border-bottom: var(--border);
-            padding-bottom: .25em;
-        }
-        & input:focus + label,
-        input:not(:placeholder-shown) + label {
-            transform: translateY(-25px);
-            transition: transform .2s ease;
-            color: var(--black);
+
+        &.publication-card:nth-child(3) {
+            border-right: var(--border);
+            border-bottom: none;
+
+            @media (min-width: 783px) {
+                border-right: none;
+            }
         }
     }
+
+    @media (min-width: 783px) {
+        .publication-card:nth-child(2) {
+            border-right: var(--border);
+        }
+    }
+
+    @media (min-width: 783px) {
+        .publication-card:nth-child(1),
+        .publication-card:nth-child(2) {
+            border-bottom: none;
+        }
+    }
+
+    @media (min-width: 783px) {
+        .publication-card {
+            border-bottom: none;
+        }
+    }
+}
+
+.publication-image-container {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    align-self: center;
+}
+
+.publication-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.card-content-data-publication {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-12);
+}
+
+.publication-date {
+    font-family: var(--secondary-font);
+}
+
+.publication-title {
+    font-family: var(--primary-font);
+}
+
+.button-container-publication {
+    display: flex;
+    flex-direction: row;
+    gap: var(--spacing-12);
+    margin-top: auto;
+
+    & .link {
+        text-transform: uppercase;
+    }
+}

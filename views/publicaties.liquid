@@ -11,24 +11,33 @@
     <p>Om er voor te zorgen dat ook jij op de hoogte blijft van het laatste nieuws en interessante opinies met betrekking tot onze branche en digitale innovaties, delen we hier alle content die we of zelf hebben gecreëerd, bijvoorbeeld met input van onze leden, of verkregen hebben via één van onze partners.</p>
 </section>
 
-<div class="cards-container">
+<section class="publication-card-container">
   {% for publicatie in publications %}
-  {% assign event-link = "event/detail-event/" | append: publicatie.id %}
-    {% render 'partials/foto-card.liquid',
-      heading-level: "h3"
-      img-src: publicatie.photo.id,
-      img-width: publicatie.photo.width,
-      img-height: publicatie.photo.height,
-      card-label: publicatie.topic,
-      card-title: publicatie.title,
-      card-date: publicatie.date,
-      card-location: publicatie.location,
-      image-alt: publicatie.title,
-      card-href-link: "events/detail-event/" | append: publicatie.id
-      card-href-link: event-link
-    %}
-  {% endfor %}
-</div>
+    <div class="publication-card">
+        <figure class="publication-image-container">
+            <picture>
+               <source type="image/avif" srcset="https://fdnd-agency.directus.app/assets/{{ publicatie.photo.id }}?format=avif&width=600">
+               <source type="image/webp" srcset="https://fdnd-agency.directus.app/assets/{{ publicatie.photo.id }}?format=webp&width=600">
+                <img class="publication-image" src="https://fdnd-agency.directus.app/assets/{{ publicatie.photo.id }}" alt="" width="258" height="450">
+            </picture>
+        </figure>
+
+        <div class="card-content-data-publication">
+
+           {% render 'partials/category-label.liquid', text: publicatie.topic %}
+
+            <p class="publication-date">{{ publicatie.date }}</p>
+
+           <h3 class="publication-title sm">{{ publicatie.title }}</h3>
+
+        </div>
+
+          <div class="button-container-publication">
+              {% render 'partials/link-href.liquid', linktext: 'DETAILS' %} 
+          </div>
+    </div>
+    {% endfor %}
+</section>
 
 <form class="filter-system-container" method="get" action="/publicaties">
   <div class="search-bar-container">
@@ -68,7 +77,7 @@
 <div class="event-items-container">
   {% for publicatie in posts %}
   {% assign publicatie-link = "publicatie/detail-publicatie/" | append: publicatie.id %}
-    {% render 'partials/event-list.liquid', class: "test-class",
+    {% render 'partials/event-list.liquid',
       header-level: "h3"
       card-label: publicatie.topic,
       card-title: publicatie.title,
