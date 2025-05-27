@@ -15,6 +15,7 @@ In de huidige sprint 11 wordt de nadruk gelegd op het toepassen van de standaard
   - [Moskou labels op prioriteit](#moskou-labels-op-prioriteit)
   - [Pull requests](#pull-requests)
   - [Beschrijving](#beschrijving-1)
+    - [Mockups van de paginas](#mockups-van-de-paginas)
   - [Gebruik](#gebruik)
     - [Gebruikte technologieën](#gebruikte-technologieën)
   - [Installatie](#installatie)
@@ -66,6 +67,20 @@ Voor pull requests gebruiken we de template van fdnd-agency
 <!-- Bij Beschrijving staat kort beschreven wat voor project het is en wat je hebt gemaakt -->
 <!-- Voeg een mooie poster visual toe 📸 -->
 <!-- Voeg een link toe naar Github Pages 🌐-->
+### Mockups van de paginas
+| Home                                                     |Over ons                                           |
+| -------------------------------------------------------- | -------------------------------------------------- |
+| <img src="./public/img/home-mockup.gif" width="300"> | <img src="./public/img/overons-mockup.gif" width="300"> |
+
+| Publicaties                                            | Leden                                         |
+| -------------------------------------------------- | ----------------------------------------------------- |
+| <img src="./public/img/publicaties-mockup.gif" width="300"> | <img src="./public/img/leden-mockup.gif" width="300"> |
+
+| Events                                            | Vacatures                                         |
+| -------------------------------------------------- | ----------------------------------------------------- |
+| <img src="./public/img/events-mockup.gif" width="300"> | <img src="./public/img/vacatures-mockup.gif" width="300"> |
+
+
 
 ## Gebruik
 <!-- Bij Gebruik staat de user story, hoe het werkt en wat je er mee kan. -->

@@ -147,6 +147,11 @@
         justify-self: center;
         text-align: center;
         line-height: 1em;
+
+        @media (min-width: 900px) {
+            padding: 1em;
+
+        }
     }
 
     .publication-btn {
