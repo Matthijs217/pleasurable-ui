@@ -108,6 +108,7 @@
 
 .card-container-button {
     padding-top: var(--spacing-24);
+    margin-top: auto;
 }
 
 .label-container {
