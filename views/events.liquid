@@ -14,23 +14,25 @@
 
 <div class="cards-container">
   {% for eventcard in eventCards %}
-  {% assign event-link = "event/detail-event/" | append: eventcard.id %}
+    {% assign event-link = "event/detail-event/" | append: eventcard.id %}
+    {% assign split-title = eventcard.title | split: ' ' %}
+    {% assign two-words = split-title | slice: 0, 2 | join: ' ' %}
     {% render 'partials/foto-card.liquid',
       heading-level: "h3",
       class: 'xl',
       img-src: eventcard.photo.id,
       img-width: eventcard.photo.width,
       img-height: eventcard.photo.height,
-      card-label: eventcard.title,
+      card-label: two-words,
       card-title: eventcard.title,
       card-date: eventcard.date,
       card-location: eventcard.location,
       image-alt: eventcard.title,
-      card-href-link: "events/detail-event/" | append: eventcard.id
-      card-href-link: event-link,
+      card-href-link: event-link
     %}
   {% endfor %}
 </div>
+
 
 <form class="filter-system-container" method="get" action="/events">
 
@@ -73,9 +75,11 @@
 <div class="event-items-container">
   {% for event in events %}
   {% assign event-link = "event/detail-event/" | append: event.id %}
+  {% assign split-title = event.title | split: ' ' %}
+  {% assign two-words = split-title | slice: 0, 2 | join: ' ' %}
     {% render 'partials/event-list.liquid', class: "test-class",
       heading-level: "h4",
-      card-label: event.title,
+      card-label: two-words,
       card-title: event.title,
       card-date: event.date,
       card-location: event.location,

@@ -28,12 +28,14 @@
 <div class="event-main-container">
     {% for eventsListCard in eventsListCards %}
     {% assign event-link = "events/detail-event/" | append: eventsListCard.id %}
+    {% assign split-title = eventsListCard.title | split: ' ' %}
+    {% assign two-words = split-title | slice: 0, 2 | join: ' ' %}
     {% render 'partials/foto-card.liquid',
         heading-level: "h3",
         img-src: eventsListCard.photo.id,
         img-width: eventsListCard.photo.width,
         img-height: eventsListCard.photo.height,
-        card-label: eventsListCard.title,       
+        card-label: two-words,       
         card-title: eventsListCard.title,
         card-date: eventsListCard.date,
         card-location: eventsListCard.location,
@@ -45,8 +47,10 @@
     <div class="events-container">
         {% for eventsList in eventsLists %}
         {% assign event-link = "events/detail-event/" | append: eventsList.id %}
+        {% assign split-title = eventsList.title | split: ' ' %}
+        {% assign two-words = split-title | slice: 0, 2 | join: ' ' %}
         {% render 'partials/event-list.liquid',
-            card-label: eventsList.title,       
+            card-label: two-words,       
             card-title: eventsList.title,
             card-date: eventsList.date,
             card-location: eventsList.location,
@@ -63,12 +67,14 @@
 <div class="container">
     {% for event in events %}
     {% assign event-link = "events/detail-event/" | append: event.id %}
+    {% assign split-title = event.title | split: ' ' %}
+    {% assign two-words = split-title | slice: 0, 2 | join: ' ' %}
     {% render 'partials/foto-card.liquid',
         heading-level: "h3"
         img-src: event.photo.id,
         img-width: event.photo.width,
         img-height: event.photo.height,
-        card-label: event.title,       
+        card-label: two-words,       
         card-title: event.title,
         card-date: event.date,
         card-location: event.location,
