@@ -14,7 +14,7 @@
 
 <div class="cards-container">
   {% for eventcard in eventCards %}
-    {% assign event-link = "event/detail-event/" | append: eventcard.id %}
+    {% assign event-link = "events/detail-event/" | append: eventcard.id %}
     {% assign split-title = eventcard.title | split: ' ' %}
     {% assign two-words = split-title | slice: 0, 2 | join: ' ' %}
     {% render 'partials/foto-card.liquid',
@@ -74,7 +74,7 @@
 
 <div class="event-items-container">
   {% for event in events %}
-  {% assign event-link = "event/detail-event/" | append: event.id %}
+  {% assign event-link = "events/detail-event/" | append: event.id %}
   {% assign split-title = event.title | split: ' ' %}
   {% assign two-words = split-title | slice: 0, 2 | join: ' ' %}
     {% render 'partials/event-list.liquid',
