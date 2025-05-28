@@ -237,3 +237,29 @@ header{
     display: flex;
     align-items: center;
 }
+
+.succes-box {
+    display: none;
+    position: fixed;
+    bottom: 10vh;
+    left: 0;
+    width: max-content;
+    background-color: var(--white);
+    padding: var(--spacing-12);
+    opacity: 0;
+    transition: opacity .3s ease-in;
+    border: var(--border);
+    & h6 {
+        color: green;
+        font-family: var(--primary-font);
+        font-size: 1.25rem;
+    }
+    & p {
+        font-family: var(--secondary-font);
+        font-size: 0.85rem;
+    }
+    &.show {
+        display: block;
+        opacity: 1;
+    }
+}

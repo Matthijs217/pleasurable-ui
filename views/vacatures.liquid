@@ -127,7 +127,9 @@
     // Hier wil je waarschijnlijk de Loading state vervangen door een Success state
     form.outerHTML = newState.outerHTML
     let newVacancies = document.querySelector('.vacancies')
+
     newVacancies.insertAdjacentHTML("beforeend", newVacancie.outerHTML);
+
 
     // succes state toegevoegd
     const succesBox = document.querySelector('.succes-box')

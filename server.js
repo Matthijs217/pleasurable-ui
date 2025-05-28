@@ -263,8 +263,19 @@ console.log("Ontvangen body:", request.body)
         'Content-Type': 'application/json;charset=UTF-8'
       }
     });
-    response.redirect(303, '/?succes=Vacature is toegevoegd!');
+    response.redirect(303, '/vacatures?succes=Vacature is toegevoegd!');
 })
+
+app.post('/delete/:id', async (req, res) => {
+  const id = req.params.id;
+
+  await fetch(`https://fdnd-agency.directus.app/items/dda_agencies_vacancies/${id}`, {
+    method: 'DELETE',
+    headers: { 'Content-Type': 'application/json' }
+  });
+
+  res.redirect('/vacatures');
+});
 
 app.get('/vacature/:id', async function (request, response) {
  
@@ -275,6 +286,7 @@ app.get('/vacature/:id', async function (request, response) {
  // Geef hier eventueel data aan mee
  response.render('vacature.liquid', { vacatures: vacaturesResponseJSON.data[0]});
 })
+
 
 // Stel het poortnummer in waar Express op moet gaan luisteren
 // Lokaal is dit poort 8000; als deze applicatie ergens gehost wordt, waarschijnlijk poort 80
