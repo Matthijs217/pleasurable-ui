@@ -11,15 +11,7 @@
   box-sizing: border-box;
 }
 
-/* title container */
-.page-title-container{
-    border-bottom: solid var(--black) 1px;
-    width: 100%;
-    padding: var(--spacing-24);
-}
-
 .page-title-content{
-    margin-top: var(--spacing-24);
     max-width: 90ch;
     margin-left: auto;
     margin-right: auto;
@@ -52,7 +44,9 @@
 
 .filter-container{
     border-bottom: solid 1px var(--black);
+    border-top: solid 1px var(--black);
     padding: var(--spacing-24);
+
 }
 
 .filter-submit-btn{
@@ -178,16 +172,12 @@
 }
     
 .lid-toevoegen-container{
-    padding: 2em;
+    padding: var(--spacing-24) var(--spacing-16) var(--spacing-24) var(--spacing-16);
 }
 
 summary::before {
 	content: '+';
-	margin-left: 0.5em;
-    font-size: 25px;
     transition: transform 0.3s ease;
-    display: inline-block;
-    vertical-align: middle;
 }
 
 details summary::-webkit-details-marker {
@@ -202,8 +192,8 @@ summary{
     display: flex;
     align-items: center;
 	cursor: pointer;
-	gap: 0.5em;
     font-weight: bold;
+    gap: 0.3em;
 }
 
 /* loadingstate */
@@ -250,31 +240,6 @@ summary{
     width: 1px;
 }
 
-/* detailpagina */
-.lid-details-main{
-    padding: 1em;
-}
-
-.lid-image{
-    width: 100%;
-    object-fit: cover;
-    border: solid var(--black) 1px;
-}
-
-.lid-details-title{
-    display: flex;
-    justify-content: center;
-    margin-top: 0;
-    text-align: center;
-    width: fit-content;
-    margin-inline: auto;
-}
-
-.contact a, p{
-    color: var(--black);
-}
-
-
 /* Optel animatie */
 @property --_cv {
     syntax: '<integer>';
@@ -305,18 +270,80 @@ summary{
     content: counter(count);
 }
 
-
 /*   
   @supports not (initial-value: 0) {
     .counter {
       counter-reset: count {{ leden | size }};
     }
-  } */
+} */
 
+/* detailpagina */
+.lid-image{
+    margin-top: var(--spacing-24);
+    width: 100%;
+    object-fit: cover;
+    border-bottom: solid var(--black) 1px;
+    border-top: solid var(--black) 1px;
+}
 
+.contact a, p{
+    color: var(--black);
+}
   
 
+.lid-content{
+    display: flex;
+    flex-direction: column;
+    h2{
+        text-transform: uppercase;
+    }
+}
 
+.lid-description{
+    display: flex;
+    flex-direction: column;
+    padding: var(--spacing-16);
+    gap: var(--spacing-32);
+    ul{
+        list-style: none;
+    }
+}
+
+.lid-contact{
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-16);
+    h2{
+        margin-bottom: var(--spacing-32);
+    }
+    
+}
+
+.lid-vacatures{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-16);
+}
+
+@media (min-width: 470px) {
+    .lid-vacatures{
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+.lid-vacatures, .lid-cases, .lid-contact{
+    border-top: solid 1px var(--black);
+    border-bottom: solid 1px var(--black);
+    padding: var(--spacing-32) var(--spacing-32) var(--spacing-32) var(--spacing-16);
+}
+
+.lid-contact-title, .lid-mail, .lid-phone{
+    text-decoration: underline;
+    color: var(--black);
+    font-family: var(--primary-font);
+}
       
 
 

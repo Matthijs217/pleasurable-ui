@@ -1,46 +1,50 @@
 {% assign pageTitle = lidDetails.title | append: " - Dutch Digital Agencies" %}
 {% render 'partials/head.liquid', pageTitle: pageTitle %}
 
-<main class="lid-details-main main-home">
+<main class="main-home">
 
     {% render 'partials/header.liquid' %}
 
-    <section class="page-title">
-        <a href="/leden">
-        <img src="/img/arrow-left-black.svg" alt="" width="16" height="16">terug naar home
-        </a>
+    <section class="hero">
+        <section class="page-title">
+            <a href="/leden">
+                <img src="/img/arrow-left-black.svg" alt="" width="16" height="16">terug naar home
+            </a>
+
+            <h1 style="--name: vn{{ lidDetails.id }};" class="lid-details-title">{{ lidDetails.title }}</h1>
+        </section>
     </section>
 
-    {% if lidDetails %}
-        <section class="lid-info" >
-            <h1 style="--name: vn{{ lidDetails.id }};" class="lid-details-title">{{ lidDetails.title }}</h1>
-            <img class="lid-image" src="https://fdnd-agency.directus.app/assets/{{ lidDetails.photo }}" alt="{{ lidDetails.title }}" width="1000" height="500">
+    <img class="lid-image" src="https://fdnd-agency.directus.app/assets/{{ lidDetails.photo }}" alt="{{ lidDetails.title }}" width="1000" height="500">
+    
+    <section class="lid-content">
+        <section class="lid-description">
             <p>{{ lidDetails.description }}</p>
         </section>
-       
-      {% else %}
-        <p>Lid niet gevonden.</p>
-    {% endif %}
-
         
-    <section class="vacatures">
-        <h2>vacatures</h2>
-    </section>
+        
+        <section class="lid-vacatures">
+            <h2>Vacatures</h2>
+            <div>
+                {% render 'partials/button.liquid', submit: 'Bekijk alle', label: 'Bekijk alle vacatures' %}
+            </div>
+        </section>
 
-    <section class="cases">
-        <h2>cases</h2>
-    </section>
+        <section class="lid-cases">
+            <h2>Cases</h2>
+        </section>
 
-    <section class="contact">
-        <h2>contact</h2>
-        <p>{{ lidDetails.title }}</p>
-        {% assign addressDetails = lidDetails.address | split: " "  %}
-        {% comment %} TODO: get first two of array, get everything after the first 2 {% endcomment %}
-        <p>{{addressDetails[0] }} {{addressDetails[1] }}<br>
-        {{ addressDetails[2] }} {{ addressDetails[3] }} {{ addressDetails[4] }} {{ addressDetails[5] }}
-        </p>
-        <a href="{{ lidDetails.phone }}">{{ lidDetails.phone }}</p></a>
-        <a href="mailto:{{ lidDetails.email }}">{{ lidDetails.email }}</p></a>
+        <section class="lid-contact">
+            <h2>Contact</h2>
+            <a href="" class="lid-contact-title">{{ lidDetails.title }}</a>
+            {% assign addressDetails = lidDetails.address | split: " "  %}
+            {% comment %} TODO: get first two of array, get everything after the first 2 {% endcomment %}
+            <p>{{addressDetails[0] }} {{addressDetails[1] }}<br>
+            {{ addressDetails[2] }} {{ addressDetails[3] }} {{ addressDetails[4] }} {{ addressDetails[5] }}
+            </p>
+            <a class="lid-phone" href="{{ lidDetails.phone }}">{{ lidDetails.phone }}</p></a>
+            <a class="lid-mail" href="mailto:{{ lidDetails.email }}">{{ lidDetails.email }}</p></a>
+        </section>
     </section>
 </main>
 {% render 'partials/footer.liquid' %}
