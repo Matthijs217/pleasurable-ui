@@ -51,6 +51,17 @@ Dit is hoe we de prioriteit hebben gelabeld aan een functionaliteit.
 Voor pull requests gebruiken we de template van fdnd-agency
 - https://github.com/fdnd-agency/.github/blob/main/pull_request_template.md?plain=1
 
+## Ontwerp keuzes
+
+De hele website bestaat uit het
+figma design van de opdrachtgever. Wij hebben deze ontwerpkeuzes toegepast op de website wat je kan zien aan de componenten:
+
+<img src="https://github.com/user-attachments/assets/186a04b3-29ca-4b93-8722-fdaf39c738f5" width="400"/>
+<img src="https://github.com/user-attachments/assets/a61f7627-6f53-4e6a-b00f-3878381cd214" width="400"/>
+<img src="https://github.com/user-attachments/assets/22007d98-9793-4f6d-9dd1-bee50776c9cb" width="400"/>
+<img src="https://github.com/user-attachments/assets/cd905596-a412-40de-b572-bd20503213a4" width="400"/>
+
+
 ## Mobile first
 Bij de ontwikkeling van de pagina is gewerkt volgens het mobile first-principe. Hierbij is ook rekening gehouden met de responsiveness van de typografie voor grotere schermen. Dit is gedaan door middel van CSS clamp(). Deze aanpak is verwerkt in de styleguide van de basic-styling.
 
